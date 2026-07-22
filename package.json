@@ -1,0 +1,16 @@
+{
+  "name": "homeport",
+  "version": "1.0.0",
+  "description": "母港 · bobochang.cn — personal homepage of the fleet",
+  "scripts": {
+    "build": "./build.sh",
+    "deploy": "./build.sh && wrangler deploy"
+  },
+  "type": "commonjs",
+  "devDependencies": {
+    "@babel/cli": "^8.0.4",
+    "@babel/core": "^8.0.1",
+    "@babel/preset-react": "^8.0.1"
+  },
+  "private": true
+}
