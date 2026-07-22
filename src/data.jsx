@@ -71,7 +71,7 @@ const SITE = {
     id: "boss-agent-cli",
     emoji: "🤖",
     name: "boss-agent-cli",
-    stars: "1,433",
+    stars: "1,434",
     starsNote: { zh: "GitHub 星标", en: "GitHub stars" },
     desc: {
       zh: "为 AI agent 打造的 BOSS 直聘本地辅助 CLI —— 搜索、福利筛选、意向清单、JSON 信封输出；默认低风险、合规运行。",
@@ -192,8 +192,8 @@ const SITE = {
   },
 
   stats: [
-    { value: "1,436", icon: "star", label: { zh: "累计星标", en: "Total stars" } },
-    { value: "1,312", icon: "pulse", label: { zh: "年度贡献", en: "Contributions / yr" } },
+    { value: "1,437", icon: "star", label: { zh: "累计星标", en: "Total stars" } },
+    { value: "1,313", icon: "pulse", label: { zh: "年度贡献", en: "Contributions / yr" } },
     { value: "9", icon: "ship", label: { zh: "在航船只", en: "Vessels under way" } },
     { value: "13", icon: "box", label: { zh: "公开仓库", en: "Public repos" } },
   ],
@@ -203,11 +203,13 @@ const SITE = {
     note: { zh: "按船队各仓库代码量统计", en: "By code volume across fleet repositories" },
     items: [
       { name: "Swift", pct: 44 },
-      { name: "Python", pct: 34 },
+      { name: "Python", pct: 33 },
       { name: "HTML", pct: 8 },
       { name: "TypeScript", pct: 6 },
-      { name: "JavaScript", pct: 3 },
-      { name: "Other", pct: 5 },
+      { name: "JavaScript", pct: 4 },
+      { name: "Go", pct: 2 },
+      { name: "Vue", pct: 1 },
+      { name: "Other", pct: 2 },
     ],
   },
 
