@@ -49,7 +49,7 @@ npx wrangler deploy  # 部署 Cloudflare Workers + 自定义域名
 | 🎣 [Trawl](https://github.com/can4hou6joeng4/Trawl) | 拖网 | 法律文书结构化取证台 |
 | 🌊 [Tide](https://github.com/can4hou6joeng4/Tide) | 潮汐 | 掘金每日签到 |
 | 🛟 [Buoy](https://github.com/can4hou6joeng4/Buoy) | 浮标 | AnyRouter 多账号签到 |
-| 🛥️ [landing-craft](https://github.com/can4hou6joeng4/landing-craft) | 登陆艇 | 落地页 Claude Code 技能 |
+| 🏝️ [Landfall](https://github.com/can4hou6joeng4/Landfall) | 登陆 | 落地页 Claude Code 技能 |
 | 🧭 **Homeport** | 母港 | 本站 · [bobochang.cn](https://bobochang.cn) |
 
 ## License

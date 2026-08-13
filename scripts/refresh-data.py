@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 OWNER = "can4hou6joeng4"
 FLEET = ["boss-agent-cli", "Harbor", "Beacon", "Atlas", "Semaphore",
-         "Trawl", "Tide", "Buoy", "landing-craft", "Homeport"]
+         "Trawl", "Tide", "Buoy", "Landfall", "Homeport"]
 LANG_BUCKETS = ["Swift", "Python", "TypeScript", "JavaScript", "Go", "HTML", "Vue"]
 
 def gh(*args, inp=None):
@@ -25,7 +25,9 @@ for repo in FLEET:
         lang_bytes[k if k in LANG_BUCKETS else "Other"] = lang_bytes.get(k if k in LANG_BUCKETS else "Other", 0) + v
 
 total_stars = sum(stars.values())
-public_repos = json.loads(gh("api", f"users/{OWNER}"))["public_repos"]
+# 仓库数只算自建，排除 fork(与站点「自建仓库」口径一致)
+own_repos = len(gh("api", "--paginate", f"users/{OWNER}/repos?per_page=100",
+                   "--jq", ".[] | select(.fork == false) | .name").split())
 contrib = json.loads(gh("api", "graphql", "-f", "query=query{user(login:\"%s\"){contributionsCollection{contributionCalendar{totalContributions}}}}" % OWNER))
 contributions = contrib["data"]["user"]["contributionsCollection"]["contributionCalendar"]["totalContributions"]
 
@@ -52,7 +54,7 @@ for repo in FLEET:
     data = re.sub(rf'(id: "{repo}", emoji: [^\n]*stars: )\d+', rf"\g<1>{stars[repo]}", data)
 data = re.sub(r'value: "[^"]*", icon: "star"', f'value: "{fmt(total_stars)}", icon: "star"', data)
 data = re.sub(r'value: "[^"]*", icon: "pulse"', f'value: "{fmt(contributions)}", icon: "pulse"', data)
-data = re.sub(r'value: "[^"]*", icon: "box"', f'value: "{public_repos}", icon: "box"', data)
+data = re.sub(r'value: "[^"]*", icon: "box"', f'value: "{own_repos}", icon: "box"', data)
 items_src = "\n".join(f'      {{ name: "{k}", pct: {v} }},' for k, v in items)
 data = re.sub(r"(langMix: \{[\s\S]*?items: \[\n)[\s\S]*?(    \],)", rf"\g<1>{items_src}\n\g<2>", data)
 (ROOT / "src/data.jsx").write_text(data)
@@ -63,6 +65,6 @@ comp_new = re.sub(r"★ [\d.,]+k?", f"★ {short(stars['boss-agent-cli'])}", com
 comp_path.write_text(comp_new)
 
 changed = data != orig or comp_new != comp
-print(f"stars={fmt(total_stars)} contrib={fmt(contributions)} repos={public_repos} "
+print(f"stars={fmt(total_stars)} contrib={fmt(contributions)} repos={own_repos} "
       f"flagship={fmt(stars['boss-agent-cli'])} langs={items}")
 print("CHANGED" if changed else "UNCHANGED")

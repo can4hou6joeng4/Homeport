@@ -1,5 +1,5 @@
 // data.jsx — 站点全部内容数据(中英双语)。组件不写死文案，均从此处取。
-// 数据快照日期：2026-07-22,来源：github.com/can4hou6joeng4(见 readme.md)。
+// 数据快照日期：2026-08-13,来源：github.com/can4hou6joeng4(见 readme.md)。
 
 const LANG_COLORS = {
   Swift: "#F05138",
@@ -133,7 +133,7 @@ const SITE = {
     id: "boss-agent-cli",
     emoji: "🤖",
     name: "boss-agent-cli",
-    stars: "1,434",
+    stars: "1,561",
     starsNote: {
       zh: "GitHub 星标",
       en: "GitHub stars"
@@ -198,7 +198,7 @@ const SITE = {
     id: "Harbor",
     emoji: "⚓",
     lang: "Swift",
-    stars: 0,
+    stars: 1,
     image: {
       zh: "港湾 · 停泊与收藏",
       en: "harbor · dock & keep"
@@ -213,7 +213,7 @@ const SITE = {
     id: "Beacon",
     emoji: "🗼",
     lang: "TypeScript",
-    stars: 0,
+    stars: 1,
     image: {
       zh: "灯塔 · 预警在前",
       en: "beacon · warn ahead"
@@ -229,7 +229,7 @@ const SITE = {
     id: "Atlas",
     emoji: "🗺️",
     lang: "Swift",
-    stars: 1,
+    stars: 2,
     image: {
       zh: "海图 · 丈量航程",
       en: "chart · measure the voyage"
@@ -245,7 +245,7 @@ const SITE = {
     id: "Semaphore",
     emoji: "🚩",
     lang: "TypeScript",
-    stars: 0,
+    stars: 2,
     image: {
       zh: "旗语 · 图像化作字符",
       en: "flag signals · image to characters"
@@ -261,7 +261,7 @@ const SITE = {
     id: "Trawl",
     emoji: "🎣",
     lang: "Go",
-    stars: 0,
+    stars: 1,
     image: {
       zh: "拖网 · 一网打捞",
       en: "trawl · haul it all in"
@@ -281,7 +281,7 @@ const SITE = {
     id: "Tide",
     emoji: "🌊",
     lang: "JavaScript",
-    stars: 0,
+    stars: 1,
     image: {
       zh: "潮汐 · 守时如海",
       en: "tide · punctual as the sea"
@@ -296,7 +296,7 @@ const SITE = {
     id: "Buoy",
     emoji: "🛟",
     lang: "Python",
-    stars: 0,
+    stars: 1,
     image: {
       zh: "浮标 · 按时浮出",
       en: "buoy · surface on schedule"
@@ -308,35 +308,35 @@ const SITE = {
     tech: ["Python", "GitHub Actions"],
     github: "https://github.com/can4hou6joeng4/Buoy"
   }, {
-    id: "landing-craft",
-    emoji: "🛥️",
+    id: "Landfall",
+    emoji: "🏝️",
     lang: "HTML",
-    stars: 2,
+    stars: 1,
     image: {
-      zh: "登陆艇 · 抢滩上岸",
-      en: "landing craft · hit the beach"
+      zh: "登陆 · 抢滩上岸",
+      en: "landfall · hit the beach"
     },
     desc: {
-      zh: "让落地页真正「落地」的 Claude Code 技能 —— 57 套城市灵感设计系统与 GSAP 动效。",
-      en: "A Claude Code skill that puts landing pages ashore — 57 city-inspired design systems, GSAP motion."
+      zh: "让每个产品页面抢滩登陆的 Claude Code 技能 —— 57 套城市灵感设计系统与 GSAP 动效。",
+      en: "A Claude Code skill that brings every product page ashore — 57 city-inspired design systems, GSAP motion."
     },
     tech: ["Claude Code", "GSAP", "SVG"],
-    github: "https://github.com/can4hou6joeng4/landing-craft",
-    site: "https://can4hou6joeng4.github.io/landing-craft/"
+    github: "https://github.com/can4hou6joeng4/Landfall",
+    site: "https://can4hou6joeng4.github.io/Landfall/"
   }],
   fleetNarrative: {
-    zh: "Harbor 收好你读过的，Beacon 在过期前点亮；Atlas 丈量航程，Tide 与 Buoy 按时浮出报到；Semaphore 把图像打成旗语，Trawl 把文书捞成数据，landing-craft 送页面抢滩上岸 —— 各自航行，同队而动。",
-    en: "Harbor keeps what you read, and Beacon warns before it expires. Atlas charts the voyage while Tide and Buoy surface on schedule to report in. Semaphore signals images into characters, Trawl hauls documents up as data, and landing-craft puts your pages ashore — each sails alone, but they move as one fleet."
+    zh: "Harbor 收好你读过的，Beacon 在过期前点亮；Atlas 丈量航程，Tide 与 Buoy 按时浮出报到；Semaphore 把图像打成旗语，Trawl 把文书捞成数据，Landfall 送页面抢滩上岸 —— 各自航行，同队而动。",
+    en: "Harbor keeps what you read, and Beacon warns before it expires. Atlas charts the voyage while Tide and Buoy surface on schedule to report in. Semaphore signals images into characters, Trawl hauls documents up as data, and Landfall puts your pages ashore — each sails alone, but they move as one fleet."
   },
   stats: [{
-    value: "1,437",
+    value: "1,572",
     icon: "star",
     label: {
       zh: "累计星标",
       en: "Total stars"
     }
   }, {
-    value: "1,313",
+    value: "1,399",
     icon: "pulse",
     label: {
       zh: "年度贡献",
@@ -350,11 +350,11 @@ const SITE = {
       en: "Vessels under way"
     }
   }, {
-    value: "13",
+    value: "12",
     icon: "box",
     label: {
-      zh: "公开仓库",
-      en: "Public repos"
+      zh: "自建仓库",
+      en: "Own repos"
     }
   }],
   langMix: {
@@ -368,19 +368,19 @@ const SITE = {
     },
     items: [{
       name: "Swift",
-      pct: 44
+      pct: 41
     }, {
       name: "Python",
-      pct: 33
+      pct: 36
     }, {
       name: "HTML",
       pct: 8
     }, {
       name: "TypeScript",
-      pct: 6
+      pct: 7
     }, {
       name: "JavaScript",
-      pct: 4
+      pct: 3
     }, {
       name: "Go",
       pct: 2
@@ -1076,7 +1076,7 @@ const ROUTE_DOTS = [{
 }, {
   x: 1162,
   y: 26,
-  n: "landing-craft"
+  n: "Landfall"
 }];
 const routePath = () => {
   const p = ROUTE_DOTS;
@@ -1117,7 +1117,7 @@ const RouteLine = ({
   x: p.x,
   y: p.y - 14,
   textAnchor: "start"
-}, "★ 1.4k") : null, /*#__PURE__*/React.createElement("text", {
+}, "★ 1.6k") : null, /*#__PURE__*/React.createElement("text", {
   className: "route-name",
   x: p.x,
   y: i % 2 === 0 ? p.y + 24 : p.y - 14,
@@ -1184,7 +1184,7 @@ const Hero = ({
     size: 15
   }), h.ctaGithub, /*#__PURE__*/React.createElement("span", {
     className: "star-chip"
-  }, "★ 1.4k"))), /*#__PURE__*/React.createElement(RouteLine, {
+  }, "★ 1.6k"))), /*#__PURE__*/React.createElement(RouteLine, {
     lang: lang
   })));
 };

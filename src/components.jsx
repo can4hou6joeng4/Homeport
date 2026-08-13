@@ -54,7 +54,7 @@ const ROUTE_DOTS = [
   { x: 744, y: 38, n: "Trawl" },
   { x: 886, y: 56, n: "Tide" },
   { x: 1028, y: 42, n: "Buoy" },
-  { x: 1162, y: 26, n: "landing-craft" },
+  { x: 1162, y: 26, n: "Landfall" },
 ];
 
 const routePath = () => {
@@ -84,7 +84,7 @@ const RouteLine = ({ lang }) => (
             <title>{p.n}</title>
           </circle>
           {p.flag ? (
-            <text className="route-star" x={p.x} y={p.y - 14} textAnchor="start">★ 1.4k</text>
+            <text className="route-star" x={p.x} y={p.y - 14} textAnchor="start">★ 1.6k</text>
           ) : null}
           <text className="route-name" x={p.x} y={i % 2 === 0 ? p.y + 24 : p.y - 14}
             textAnchor={i === 0 ? "start" : i === ROUTE_DOTS.length - 1 ? "end" : "middle"}>
@@ -116,7 +116,7 @@ const Hero = ({ lang }) => {
         <div className="cta-row reveal" style={{ "--d": "0.28s" }}>
           <a className="btn btn-primary" href="#fleet"><IconAnchor size={15} />{tr(h.ctaFleet, lang)}</a>
           <a className="btn btn-ghost" href={SITE.meta.github} target="_blank" rel="noreferrer">
-            <IconGitHub size={15} />{h.ctaGithub}<span className="star-chip">★ 1.4k</span>
+            <IconGitHub size={15} />{h.ctaGithub}<span className="star-chip">★ 1.6k</span>
           </a>
         </div>
         <RouteLine lang={lang} />

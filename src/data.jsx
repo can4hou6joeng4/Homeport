@@ -1,5 +1,5 @@
 // data.jsx — 站点全部内容数据(中英双语)。组件不写死文案，均从此处取。
-// 数据快照日期：2026-07-22,来源：github.com/can4hou6joeng4(见 readme.md)。
+// 数据快照日期：2026-08-13,来源：github.com/can4hou6joeng4(见 readme.md)。
 
 const LANG_COLORS = {
   Swift: "#F05138",
@@ -71,7 +71,7 @@ const SITE = {
     id: "boss-agent-cli",
     emoji: "🤖",
     name: "boss-agent-cli",
-    stars: "1,434",
+    stars: "1,561",
     starsNote: { zh: "GitHub 星标", en: "GitHub stars" },
     desc: {
       zh: "为 AI agent 打造的 BOSS 直聘本地辅助 CLI —— 搜索、福利筛选、意向清单、JSON 信封输出；默认低风险、合规运行。",
@@ -99,7 +99,7 @@ const SITE = {
 
   fleet: [
     {
-      id: "Harbor", emoji: "⚓", lang: "Swift", stars: 0,
+      id: "Harbor", emoji: "⚓", lang: "Swift", stars: 1,
       image: { zh: "港湾 · 停泊与收藏", en: "harbor · dock & keep" },
       desc: {
         zh: "本地优先的 Mac 阅读与收藏应用 —— 数据全在本地的知识港湾，RSS 与稍后读一站收齐。",
@@ -109,7 +109,7 @@ const SITE = {
       github: "https://github.com/can4hou6joeng4/Harbor",
     },
     {
-      id: "Beacon", emoji: "🗼", lang: "TypeScript", stars: 0,
+      id: "Beacon", emoji: "🗼", lang: "TypeScript", stars: 1,
       image: { zh: "灯塔 · 预警在前", en: "beacon · warn ahead" },
       desc: {
         zh: "在证件过期之前，点亮它 —— PDF 证件有效期云端审计，OCR 自动识别到期日。",
@@ -120,7 +120,7 @@ const SITE = {
       site: "https://pdf-audit.bobochang.cn",
     },
     {
-      id: "Atlas", emoji: "🗺️", lang: "Swift", stars: 1,
+      id: "Atlas", emoji: "🗺️", lang: "Swift", stars: 2,
       image: { zh: "海图 · 丈量航程", en: "chart · measure the voyage" },
       desc: {
         zh: "在 macOS 菜单栏丈量本地 AI 编程航程 —— token、成本、会话与 Git 活动一目了然。",
@@ -131,7 +131,7 @@ const SITE = {
       site: "https://can4hou6joeng4.github.io/Atlas/",
     },
     {
-      id: "Semaphore", emoji: "🚩", lang: "TypeScript", stars: 0,
+      id: "Semaphore", emoji: "🚩", lang: "TypeScript", stars: 2,
       image: { zh: "旗语 · 图像化作字符", en: "flag signals · image to characters" },
       desc: {
         zh: "把图片打成字符旗语 —— 全程在浏览器本地完成，无上传、无账号，支持盲文与 CRT 风格。",
@@ -142,7 +142,7 @@ const SITE = {
       site: "https://semaphore.bobochang.cn",
     },
     {
-      id: "Trawl", emoji: "🎣", lang: "Go", stars: 0,
+      id: "Trawl", emoji: "🎣", lang: "Go", stars: 1,
       image: { zh: "拖网 · 一网打捞", en: "trawl · haul it all in" },
       desc: {
         zh: "把成摞法律文书一网打捞成结构化数据的桌面取证台 —— PDF、DOCX、OCR 通吃。",
@@ -154,7 +154,7 @@ const SITE = {
       siteLabel: { zh: "下载", en: "Download" },
     },
     {
-      id: "Tide", emoji: "🌊", lang: "JavaScript", stars: 0,
+      id: "Tide", emoji: "🌊", lang: "JavaScript", stars: 1,
       image: { zh: "潮汐 · 守时如海", en: "tide · punctual as the sea" },
       desc: {
         zh: "如潮汐般守时的掘金每日签到 —— 免费抽奖，Telegram 播报战果。",
@@ -164,7 +164,7 @@ const SITE = {
       github: "https://github.com/can4hou6joeng4/Tide",
     },
     {
-      id: "Buoy", emoji: "🛟", lang: "Python", stars: 0,
+      id: "Buoy", emoji: "🛟", lang: "Python", stars: 1,
       image: { zh: "浮标 · 按时浮出", en: "buoy · surface on schedule" },
       desc: {
         zh: "按时浮出水面报到的 AnyRouter 多账号自动签到 —— 多平台通知，智能隐私脱敏。",
@@ -174,39 +174,39 @@ const SITE = {
       github: "https://github.com/can4hou6joeng4/Buoy",
     },
     {
-      id: "landing-craft", emoji: "🛥️", lang: "HTML", stars: 2,
-      image: { zh: "登陆艇 · 抢滩上岸", en: "landing craft · hit the beach" },
+      id: "Landfall", emoji: "🏝️", lang: "HTML", stars: 1,
+      image: { zh: "登陆 · 抢滩上岸", en: "landfall · hit the beach" },
       desc: {
-        zh: "让落地页真正「落地」的 Claude Code 技能 —— 57 套城市灵感设计系统与 GSAP 动效。",
-        en: "A Claude Code skill that puts landing pages ashore — 57 city-inspired design systems, GSAP motion.",
+        zh: "让每个产品页面抢滩登陆的 Claude Code 技能 —— 57 套城市灵感设计系统与 GSAP 动效。",
+        en: "A Claude Code skill that brings every product page ashore — 57 city-inspired design systems, GSAP motion.",
       },
       tech: ["Claude Code", "GSAP", "SVG"],
-      github: "https://github.com/can4hou6joeng4/landing-craft",
-      site: "https://can4hou6joeng4.github.io/landing-craft/",
+      github: "https://github.com/can4hou6joeng4/Landfall",
+      site: "https://can4hou6joeng4.github.io/Landfall/",
     },
   ],
 
   fleetNarrative: {
-    zh: "Harbor 收好你读过的，Beacon 在过期前点亮；Atlas 丈量航程，Tide 与 Buoy 按时浮出报到；Semaphore 把图像打成旗语，Trawl 把文书捞成数据，landing-craft 送页面抢滩上岸 —— 各自航行，同队而动。",
-    en: "Harbor keeps what you read, and Beacon warns before it expires. Atlas charts the voyage while Tide and Buoy surface on schedule to report in. Semaphore signals images into characters, Trawl hauls documents up as data, and landing-craft puts your pages ashore — each sails alone, but they move as one fleet.",
+    zh: "Harbor 收好你读过的，Beacon 在过期前点亮；Atlas 丈量航程，Tide 与 Buoy 按时浮出报到；Semaphore 把图像打成旗语，Trawl 把文书捞成数据，Landfall 送页面抢滩上岸 —— 各自航行，同队而动。",
+    en: "Harbor keeps what you read, and Beacon warns before it expires. Atlas charts the voyage while Tide and Buoy surface on schedule to report in. Semaphore signals images into characters, Trawl hauls documents up as data, and Landfall puts your pages ashore — each sails alone, but they move as one fleet.",
   },
 
   stats: [
-    { value: "1,437", icon: "star", label: { zh: "累计星标", en: "Total stars" } },
-    { value: "1,313", icon: "pulse", label: { zh: "年度贡献", en: "Contributions / yr" } },
+    { value: "1,572", icon: "star", label: { zh: "累计星标", en: "Total stars" } },
+    { value: "1,399", icon: "pulse", label: { zh: "年度贡献", en: "Contributions / yr" } },
     { value: "9", icon: "ship", label: { zh: "在航船只", en: "Vessels under way" } },
-    { value: "13", icon: "box", label: { zh: "公开仓库", en: "Public repos" } },
+    { value: "12", icon: "box", label: { zh: "自建仓库", en: "Own repos" } },
   ],
 
   langMix: {
     title: { zh: "主航线 · 语言分布", en: "Main routes · language mix" },
     note: { zh: "按船队各仓库代码量统计", en: "By code volume across fleet repositories" },
     items: [
-      { name: "Swift", pct: 44 },
-      { name: "Python", pct: 33 },
+      { name: "Swift", pct: 41 },
+      { name: "Python", pct: 36 },
       { name: "HTML", pct: 8 },
-      { name: "TypeScript", pct: 6 },
-      { name: "JavaScript", pct: 4 },
+      { name: "TypeScript", pct: 7 },
+      { name: "JavaScript", pct: 3 },
       { name: "Go", pct: 2 },
       { name: "Vue", pct: 1 },
       { name: "Other", pct: 2 },
