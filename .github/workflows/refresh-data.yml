@@ -1,0 +1,67 @@
+# refresh-data.yml — 每周刷新 GitHub 数据快照,有变化才构建、部署、提交。
+# 取代原先本机 launchd 方案:不依赖笔记本开机,失败在 Actions 页面显性可见。
+name: refresh-data
+
+on:
+  schedule:
+    - cron: "30 1 * * 1" # 每周一 01:30 UTC = 北京时间 09:30
+  workflow_dispatch: # 也可在 Actions 页面手动触发
+
+permissions:
+  contents: write # 需要提交刷新后的快照
+
+concurrency:
+  group: refresh-data
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+
+      - run: npm ci
+
+      # runner 已预装 gh CLI 与 python3。年度贡献走 GraphQL 的
+      # contributionsCollection,默认 GITHUB_TOKEN 可能权限不足;
+      # 配了 GH_PAT(read:user)就优先用它。
+      - name: 刷新数据快照
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+        run: python3 scripts/refresh-data.py
+
+      - name: 检查快照是否有变化
+        id: check
+        run: |
+          if git diff --quiet -- src/; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "快照无变化,跳过构建与部署"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            git --no-pager diff --stat -- src/
+          fi
+
+      - name: 构建
+        if: steps.check.outputs.changed == 'true'
+        run: ./build.sh
+
+      # 先部署再提交:部署失败就不留提交,下一次运行会重试。
+      - name: 部署 Cloudflare Workers
+        if: steps.check.outputs.changed == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: npx wrangler deploy
+
+      - name: 提交并推送
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/ dist/
+          git commit -m "chore(data): refresh stats snapshot $(date -u +%F)"
+          git push

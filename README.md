@@ -34,8 +34,14 @@ npm install        # Babel 工具链
 npx wrangler deploy  # 部署 Cloudflare Workers + 自定义域名
 ```
 
-站点数据(星标 / 贡献 / 语言分布)为快照,由本机 launchd 每日 09:30 自动刷新:
-`scripts/refresh-and-deploy.sh` 拉取 GitHub 实时数据重写 `src/data.jsx`,**有变化才**构建、部署并提交推送(LaunchAgent:`cn.bobochang.homeport-refresh`,日志在 `~/Library/Logs/homeport-refresh.log`)。手动刷新直接跑同一脚本即可。
+站点数据(星标 / 贡献 / 语言分布)为快照,不在运行时请求 GitHub。由 GitHub Actions 每周一 09:30(北京时间)自动刷新:`scripts/refresh-data.py` 拉取实时数据重写 `src/data.jsx`,**有变化才**构建、部署并提交(workflow:[`refresh-data.yml`](.github/workflows/refresh-data.yml),也可在 Actions 页面手动触发)。
+
+本地手动刷新:
+
+```bash
+python3 scripts/refresh-data.py   # 需已登录的 gh CLI
+./build.sh && npx wrangler deploy
+```
 
 ## ⚓ The Fleet
 
