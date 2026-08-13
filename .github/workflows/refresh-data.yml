@@ -28,8 +28,8 @@ jobs:
       - run: npm ci
 
       # runner 已预装 gh CLI 与 python3。年度贡献走 GraphQL 的
-      # contributionsCollection,默认 GITHUB_TOKEN 可能权限不足;
-      # 配了 GH_PAT(read:user)就优先用它。
+      # contributionsCollection,已实测默认 GITHUB_TOKEN 权限足够;
+      # 保留 GH_PAT(read:user)作为日后权限收紧时的退路。
       - name: 刷新数据快照
         env:
           GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
