@@ -31,9 +31,13 @@ jobs:
       # contributionsCollection,已实测默认 GITHUB_TOKEN 权限足够;
       # 保留 GH_PAT(read:user)作为日后权限收紧时的退路。
       - name: 刷新数据快照
+        id: refresh
         env:
           GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
-        run: python3 scripts/refresh-data.py
+        run: |
+          set -o pipefail
+          python3 scripts/refresh-data.py | tee /tmp/refresh.log
+          echo "summary=$(head -1 /tmp/refresh.log)" >> "$GITHUB_OUTPUT"
 
       - name: 检查快照是否有变化
         id: check
@@ -65,3 +69,36 @@ jobs:
           git add src/ dist/
           git commit -m "chore(data): refresh stats snapshot $(date -u +%F)"
           git push
+
+      # 播报规则:失败必报;成功仅在真的部署了才报。「无变化」不打扰。
+      # 未配置 Telegram secrets 时静默跳过,播报本身失败也不影响任务结论。
+      - name: Telegram 播报
+        if: failure() || steps.check.outputs.changed == 'true'
+        continue-on-error: true
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_MESSAGE_THREAD_ID: ${{ vars.TELEGRAM_MESSAGE_THREAD_ID }}
+          STATUS: ${{ job.status }}
+          SUMMARY: ${{ steps.refresh.outputs.summary }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "未配置 Telegram secrets,跳过播报"
+            exit 0
+          fi
+          if [ "$STATUS" = "success" ]; then
+            TEXT=$(printf '🧭 Homeport · 快照已刷新并部署\n\n%s\n\nbobochang.cn 已更新\n%s' \
+                   "${SUMMARY:-(无摘要)}" "$RUN_URL")
+          else
+            TEXT=$(printf '⚠️ Homeport · 数据刷新失败(%s)\n\n线上站点未受影响,下周会自动重试。\n%s' \
+                   "$STATUS" "$RUN_URL")
+          fi
+          ARGS=(--data-urlencode "chat_id=$TELEGRAM_CHAT_ID"
+                --data-urlencode "text=$TEXT"
+                --data-urlencode "disable_web_page_preview=true")
+          if [ -n "$TELEGRAM_MESSAGE_THREAD_ID" ]; then
+            ARGS+=(--data-urlencode "message_thread_id=$TELEGRAM_MESSAGE_THREAD_ID")
+          fi
+          curl -sS -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
+               "${ARGS[@]}" -o /dev/null -w 'telegram sendMessage: %{http_code}\n'
