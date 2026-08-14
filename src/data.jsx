@@ -71,7 +71,7 @@ const SITE = {
     id: "boss-agent-cli",
     emoji: "🤖",
     name: "boss-agent-cli",
-    stars: "1,564",
+    stars: "1,565",
     starsNote: { zh: "GitHub 星标", en: "GitHub stars" },
     desc: {
       zh: "为 AI agent 打造的 BOSS 直聘本地辅助 CLI —— 搜索、福利筛选、意向清单、JSON 信封输出；默认低风险、合规运行。",
@@ -192,7 +192,7 @@ const SITE = {
   },
 
   stats: [
-    { value: "1,575", icon: "star", label: { zh: "累计星标", en: "Total stars" } },
+    { value: "1,576", icon: "star", label: { zh: "累计星标", en: "Total stars" } },
     { value: "1,409", icon: "pulse", label: { zh: "年度贡献", en: "Contributions / yr" } },
     { value: "9", icon: "ship", label: { zh: "在航船只", en: "Vessels under way" } },
     { value: "12", icon: "box", label: { zh: "自建仓库", en: "Own repos" } },

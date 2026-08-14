@@ -133,7 +133,7 @@ const SITE = {
     id: "boss-agent-cli",
     emoji: "🤖",
     name: "boss-agent-cli",
-    stars: "1,564",
+    stars: "1,565",
     starsNote: {
       zh: "GitHub 星标",
       en: "GitHub stars"
@@ -329,7 +329,7 @@ const SITE = {
     en: "Harbor keeps what you read, and Beacon warns before it expires. Atlas charts the voyage while Tide and Buoy surface on schedule to report in. Semaphore signals images into characters, Trawl hauls documents up as data, and Landfall puts your pages ashore — each sails alone, but they move as one fleet."
   },
   stats: [{
-    value: "1,575",
+    value: "1,576",
     icon: "star",
     label: {
       zh: "累计星标",
