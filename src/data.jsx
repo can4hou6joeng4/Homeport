@@ -1,5 +1,5 @@
 // data.jsx — 站点全部内容数据(中英双语)。组件不写死文案，均从此处取。
-// 数据快照日期：2026-08-13,来源：github.com/can4hou6joeng4(见 readme.md)。
+// 数据快照日期：2026-08-14,来源：github.com/can4hou6joeng4(见 readme.md)。
 
 const LANG_COLORS = {
   Swift: "#F05138",
@@ -71,7 +71,7 @@ const SITE = {
     id: "boss-agent-cli",
     emoji: "🤖",
     name: "boss-agent-cli",
-    stars: "1,561",
+    stars: "1,564",
     starsNote: { zh: "GitHub 星标", en: "GitHub stars" },
     desc: {
       zh: "为 AI agent 打造的 BOSS 直聘本地辅助 CLI —— 搜索、福利筛选、意向清单、JSON 信封输出；默认低风险、合规运行。",
@@ -192,8 +192,8 @@ const SITE = {
   },
 
   stats: [
-    { value: "1,572", icon: "star", label: { zh: "累计星标", en: "Total stars" } },
-    { value: "1,399", icon: "pulse", label: { zh: "年度贡献", en: "Contributions / yr" } },
+    { value: "1,575", icon: "star", label: { zh: "累计星标", en: "Total stars" } },
+    { value: "1,409", icon: "pulse", label: { zh: "年度贡献", en: "Contributions / yr" } },
     { value: "9", icon: "ship", label: { zh: "在航船只", en: "Vessels under way" } },
     { value: "12", icon: "box", label: { zh: "自建仓库", en: "Own repos" } },
   ],
@@ -202,9 +202,9 @@ const SITE = {
     title: { zh: "主航线 · 语言分布", en: "Main routes · language mix" },
     note: { zh: "按船队各仓库代码量统计", en: "By code volume across fleet repositories" },
     items: [
-      { name: "Swift", pct: 41 },
+      { name: "Swift", pct: 40 },
       { name: "Python", pct: 36 },
-      { name: "HTML", pct: 8 },
+      { name: "HTML", pct: 9 },
       { name: "TypeScript", pct: 7 },
       { name: "JavaScript", pct: 3 },
       { name: "Go", pct: 2 },
