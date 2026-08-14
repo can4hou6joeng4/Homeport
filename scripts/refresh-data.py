@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # refresh-data.py — 拉取 GitHub 实时数据,刷新 src/data.jsx 与 components.jsx 中的统计快照。
 # 只改数字快照(星标 / 贡献 / 仓库数 / 语言分布),不碰文案与结构。
-import json, re, subprocess, sys, datetime
+import json, os, re, subprocess, sys, datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -68,3 +68,23 @@ changed = data != orig or comp_new != comp
 print(f"stars={fmt(total_stars)} contrib={fmt(contributions)} repos={own_repos} "
       f"flagship={fmt(stars['boss-agent-cli'])} langs={items}")
 print("CHANGED" if changed else "UNCHANGED")
+
+# 设了 REFRESH_SUMMARY_JSON 才写结构化摘要(含刷新前的旧值,供通知算增减)。
+# 未设时行为与从前完全一致,手动跑不受影响。
+summary_path = os.environ.get("REFRESH_SUMMARY_JSON")
+if summary_path:
+    def was(pattern):
+        m = re.search(pattern, orig)  # orig 是改写前的原文
+        return m.group(1) if m else None
+    summary = {
+        "changed": changed,
+        "date": today,
+        "stats": [
+            {"key": "stars_total",   "old": was(r'value: "([^"]*)", icon: "star"'),  "new": fmt(total_stars)},
+            {"key": "flagship",      "old": was(r'stars: "([^"]*)",'),               "new": fmt(stars["boss-agent-cli"])},
+            {"key": "contributions", "old": was(r'value: "([^"]*)", icon: "pulse"'), "new": fmt(contributions)},
+            {"key": "repos",         "old": was(r'value: "([^"]*)", icon: "box"'),   "new": str(own_repos)},
+        ],
+        "langs": [{"name": k, "pct": v} for k, v in items],
+    }
+    Path(summary_path).write_text(json.dumps(summary, ensure_ascii=False, indent=2))

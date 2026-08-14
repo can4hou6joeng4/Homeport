@@ -34,10 +34,8 @@ jobs:
         id: refresh
         env:
           GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
-        run: |
-          set -o pipefail
-          python3 scripts/refresh-data.py | tee /tmp/refresh.log
-          echo "summary=$(head -1 /tmp/refresh.log)" >> "$GITHUB_OUTPUT"
+          REFRESH_SUMMARY_JSON: /tmp/refresh-summary.json
+        run: python3 scripts/refresh-data.py
 
       - name: 检查快照是否有变化
         id: check
@@ -51,17 +49,20 @@ jobs:
           fi
 
       - name: 构建
+        id: build
         if: steps.check.outputs.changed == 'true'
         run: ./build.sh
 
       # 先部署再提交:部署失败就不留提交,下一次运行会重试。
       - name: 部署 Cloudflare Workers
+        id: deploy
         if: steps.check.outputs.changed == 'true'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: npx wrangler deploy
 
       - name: 提交并推送
+        id: commit
         if: steps.check.outputs.changed == 'true'
         run: |
           git config user.name  "github-actions[bot]"
@@ -79,26 +80,21 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           TELEGRAM_MESSAGE_THREAD_ID: ${{ vars.TELEGRAM_MESSAGE_THREAD_ID }}
+          REFRESH_SUMMARY_JSON: /tmp/refresh-summary.json
           STATUS: ${{ job.status }}
-          SUMMARY: ${{ steps.refresh.outputs.summary }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          OUT_REFRESH: ${{ steps.refresh.outcome }}
+          OUT_CHECK: ${{ steps.check.outcome }}
+          OUT_BUILD: ${{ steps.build.outcome }}
+          OUT_DEPLOY: ${{ steps.deploy.outcome }}
+          OUT_COMMIT: ${{ steps.commit.outcome }}
         run: |
-          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
-            echo "未配置 Telegram secrets,跳过播报"
-            exit 0
-          fi
-          if [ "$STATUS" = "success" ]; then
-            TEXT=$(printf '🧭 Homeport · 快照已刷新并部署\n\n%s\n\nbobochang.cn 已更新\n%s' \
-                   "${SUMMARY:-(无摘要)}" "$RUN_URL")
-          else
-            TEXT=$(printf '⚠️ Homeport · 数据刷新失败(%s)\n\n线上站点未受影响,下周会自动重试。\n%s' \
-                   "$STATUS" "$RUN_URL")
-          fi
-          ARGS=(--data-urlencode "chat_id=$TELEGRAM_CHAT_ID"
-                --data-urlencode "text=$TEXT"
-                --data-urlencode "disable_web_page_preview=true")
-          if [ -n "$TELEGRAM_MESSAGE_THREAD_ID" ]; then
-            ARGS+=(--data-urlencode "message_thread_id=$TELEGRAM_MESSAGE_THREAD_ID")
-          fi
-          curl -sS -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
-               "${ARGS[@]}" -o /dev/null -w 'telegram sendMessage: %{http_code}\n'
+          # 找出第一个失败的步骤,让告警能指名道姓
+          FAILED_STEP=""
+          for pair in "刷新数据快照|$OUT_REFRESH" "检查快照是否有变化|$OUT_CHECK" \
+                      "构建|$OUT_BUILD" "部署 Cloudflare Workers|$OUT_DEPLOY" \
+                      "提交并推送|$OUT_COMMIT"; do
+            if [ "${pair##*|}" = "failure" ]; then FAILED_STEP="${pair%%|*}"; break; fi
+          done
+          export FAILED_STEP
+          python3 scripts/notify-telegram.py
