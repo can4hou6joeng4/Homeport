@@ -1,5 +1,5 @@
 // data.jsx — 站点全部内容数据(中英双语)。组件不写死文案，均从此处取。
-// 数据快照日期：2026-08-14,来源：github.com/can4hou6joeng4(见 readme.md)。
+// 数据快照日期：2026-08-17,来源：github.com/can4hou6joeng4(见 readme.md)。
 
 const LANG_COLORS = {
   Swift: "#F05138",
@@ -133,7 +133,7 @@ const SITE = {
     id: "boss-agent-cli",
     emoji: "🤖",
     name: "boss-agent-cli",
-    stars: "1,565",
+    stars: "1,570",
     starsNote: {
       zh: "GitHub 星标",
       en: "GitHub stars"
@@ -329,14 +329,14 @@ const SITE = {
     en: "Harbor keeps what you read, and Beacon warns before it expires. Atlas charts the voyage while Tide and Buoy surface on schedule to report in. Semaphore signals images into characters, Trawl hauls documents up as data, and Landfall puts your pages ashore — each sails alone, but they move as one fleet."
   },
   stats: [{
-    value: "1,576",
+    value: "1,581",
     icon: "star",
     label: {
       zh: "累计星标",
       en: "Total stars"
     }
   }, {
-    value: "1,409",
+    value: "1,413",
     icon: "pulse",
     label: {
       zh: "年度贡献",
