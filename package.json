@@ -1,0 +1,19 @@
+{
+  "name": "homeport",
+  "version": "1.0.0",
+  "description": "bobochang.cn — AI agent tools, automation, and open-source projects",
+  "scripts": {
+    "build": "./build.sh",
+    "deploy": "./build.sh && wrangler deploy"
+  },
+  "type": "commonjs",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^8.0.4",
+    "@babel/core": "^8.0.1",
+    "@babel/preset-react": "^8.0.1",
+    "marked": "^16.4.2",
+    "wrangler": "^4.131.2"
+  },
+  "private": true
+}

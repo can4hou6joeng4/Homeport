@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unicode braille is an 8-pixel bitmap font · Bobochang</title>
+<meta name="description" content="Each braille character is a 2×4 dot bitmap. Threshold it and you get hard edges; run Floyd–Steinberg error diffusion over the dot grid first and a photo survives as plain text. How the pipeline in a browser image-to-ASCII converter works, with the real code and before/after figures.">
+<link rel="canonical" href="https://bobochang.cn/writing/unicode-braille-8-pixel-bitmap-font/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bobochang.cn/writing/unicode-braille-8-pixel-bitmap-font/">
+<meta property="og:title" content="Unicode braille is an 8-pixel bitmap font">
+<meta property="og:description" content="Each braille character is a 2×4 dot bitmap. Threshold it and you get hard edges; run Floyd–Steinberg error diffusion over the dot grid first and a photo survives as plain text. How the pipeline in a browser image-to-ASCII converter works, with the real code and before/after figures.">
+<meta property="og:image" content="https://bobochang.cn/writing/unicode-braille-8-pixel-bitmap-font/images/braille-2-threshold-vs-dither.webp">
+<meta property="og:site_name" content="Bobochang">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-09-14T00:00:00Z">
+<meta property="article:author" content="https://bobochang.cn/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Unicode braille is an 8-pixel bitmap font">
+<meta name="twitter:description" content="Each braille character is a 2×4 dot bitmap. Threshold it and you get hard edges; run Floyd–Steinberg error diffusion over the dot grid first and a photo survives as plain text. How the pipeline in a browser image-to-ASCII converter works, with the real code and before/after figures.">
+<meta name="twitter:image" content="https://bobochang.cn/writing/unicode-braille-8-pixel-bitmap-font/images/braille-2-threshold-vs-dither.webp">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>◈</text></svg>">
+<link rel="stylesheet" href="../../fonts/fonts.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "@id": "https://bobochang.cn/writing/unicode-braille-8-pixel-bitmap-font/#article",
+  "headline": "Unicode braille is an 8-pixel bitmap font",
+  "description": "Each braille character is a 2×4 dot bitmap. Threshold it and you get hard edges; run Floyd–Steinberg error diffusion over the dot grid first and a photo survives as plain text. How the pipeline in a browser image-to-ASCII converter works, with the real code and before/after figures.",
+  "inLanguage": "en",
+  "datePublished": "2026-09-14",
+  "dateModified": "2026-09-14",
+  "image": "https://bobochang.cn/writing/unicode-braille-8-pixel-bitmap-font/images/braille-2-threshold-vs-dither.webp",
+  "url": "https://bobochang.cn/writing/unicode-braille-8-pixel-bitmap-font/",
+  "mainEntityOfPage": "https://bobochang.cn/writing/unicode-braille-8-pixel-bitmap-font/",
+  "author": {
+    "@type": "Person",
+    "@id": "https://bobochang.cn/#person",
+    "name": "bobochang",
+    "url": "https://bobochang.cn/",
+    "sameAs": [
+      "https://github.com/can4hou6joeng4"
+    ]
+  },
+  "publisher": {
+    "@id": "https://bobochang.cn/#person"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://bobochang.cn/#website",
+    "name": "Bobochang",
+    "url": "https://bobochang.cn/"
+  },
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Braille Patterns",
+      "sameAs": "https://en.wikipedia.org/wiki/Braille_Patterns"
+    },
+    {
+      "@type": "Thing",
+      "name": "Floyd–Steinberg dithering",
+      "sameAs": "https://en.wikipedia.org/wiki/Floyd%E2%80%93Steinberg_dithering"
+    },
+    {
+      "@type": "Thing",
+      "name": "ASCII art",
+      "sameAs": "https://en.wikipedia.org/wiki/ASCII_art"
+    }
+  ],
+  "mentions": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://semaphore.bobochang.cn/#webapp",
+      "name": "Semaphore",
+      "url": "https://semaphore.bobochang.cn/"
+    }
+  ]
+}
+</script>
+<style>
+:root {
+  --accent-h: 292;
+  --bg: oklch(10% 0.008 290);
+  --bg-raise: oklch(14% 0.012 290);
+  --panel: oklch(17% 0.014 290 / 0.82);
+  --panel-solid: oklch(17% 0.014 290);
+  --term-bg: oklch(8% 0.008 290);
+  --line: oklch(92% 0.01 290 / 0.13);
+  --line-strong: oklch(92% 0.01 290 / 0.24);
+  --line-soft: oklch(92% 0.01 290 / 0.065);
+  --ink: oklch(96% 0.006 290);
+  --ink-dim: oklch(75% 0.016 290);
+  --ink-faint: oklch(57% 0.018 290);
+  --accent: oklch(70% 0.22 var(--accent-h));
+  --accent-soft: oklch(70% 0.22 var(--accent-h) / 0.16);
+  --accent-faint: oklch(70% 0.22 var(--accent-h) / 0.07);
+  --pulse: oklch(72% 0.21 335);
+  --status: oklch(82% 0.13 160);
+  --cyan: oklch(82% 0.09 220);
+  --shadow: 0 24px 70px oklch(0% 0 0 / 0.58);
+  --font-display: "Space Grotesk", -apple-system, "SF Pro Display", "PingFang SC", "Noto Sans SC", sans-serif;
+  --font-body: -apple-system, "SF Pro Text", "PingFang SC", "Noto Sans SC", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", "PingFang SC", monospace;
+  --radius: 8px;
+  --maxw: 1200px;
+  color-scheme: dark;
+}
+[data-theme="chart"] {
+  --bg: oklch(96% 0.006 290);
+  --bg-raise: oklch(99% 0.003 290);
+  --panel: oklch(100% 0 0 / 0.88);
+  --panel-solid: oklch(99% 0.003 290);
+  --term-bg: oklch(19% 0.018 290);
+  --line: oklch(22% 0.018 290 / 0.16);
+  --line-strong: oklch(22% 0.018 290 / 0.28);
+  --line-soft: oklch(22% 0.018 290 / 0.075);
+  --ink: oklch(18% 0.018 290);
+  --ink-dim: oklch(37% 0.02 290);
+  --ink-faint: oklch(51% 0.018 290);
+  --accent: oklch(54% 0.22 var(--accent-h));
+  --accent-soft: oklch(54% 0.22 var(--accent-h) / 0.13);
+  --accent-faint: oklch(54% 0.22 var(--accent-h) / 0.055);
+  --pulse: oklch(57% 0.2 335);
+  --status: oklch(55% 0.14 160);
+  --cyan: oklch(54% 0.11 220);
+  --shadow: 0 22px 58px oklch(24% 0.02 290 / 0.17);
+  color-scheme: light;
+}
+
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--accent); color: var(--bg); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid color-mix(in oklab, var(--accent) 40%, transparent); }
+a:hover { border-bottom-color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: 720px; margin-inline: auto; padding: 0 clamp(20px, 4.5vw, 48px); }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 0; font-family: var(--font-mono); font-size: 0.82rem; color: var(--ink-faint); }
+.top a { border: 0; color: var(--ink-dim); }
+.top a:hover { color: var(--accent); }
+.top .wordmark { font-family: var(--font-display); font-weight: 600; letter-spacing: 0.06em; color: var(--ink); }
+.kicker { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.08em; color: var(--ink-faint); margin-top: 48px; }
+h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.9rem, 4.6vw, 2.7rem); line-height: 1.15; letter-spacing: -0.01em; margin: 14px 0 18px; }
+.byline { font-family: var(--font-mono); font-size: 0.82rem; color: var(--ink-faint); margin-bottom: 44px; }
+.byline a { color: var(--ink-dim); border: 0; }
+article h2 { font-family: var(--font-display); font-weight: 600; font-size: 1.45rem; line-height: 1.3; margin: 52px 0 14px; }
+article h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.12rem; margin: 34px 0 10px; }
+article p { margin: 0 0 18px; }
+article em { color: var(--ink-dim); }
+article hr { border: 0; border-top: 1px solid var(--line); margin: 44px 0; }
+article ol, article ul { padding-left: 1.4em; margin: 0 0 18px; }
+article li { margin-bottom: 8px; }
+article code { font-family: var(--font-mono); font-size: 0.86em; background: var(--panel); border: 1px solid var(--line-soft); border-radius: 5px; padding: 1px 6px; }
+article pre { font-family: var(--font-mono); background: var(--term-bg); color: oklch(88% 0.02 240); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; overflow-x: auto; margin: 0 0 22px; font-size: 0.86rem; line-height: 1.6; }
+article pre code { background: none; border: 0; padding: 0; font-size: inherit; }
+article img { display: block; max-width: 100%; height: auto; border-radius: var(--radius); border: 1px solid var(--line); margin: 26px 0 10px; }
+article img + p em, article p:has(> em:only-child) { display: block; font-size: 0.86rem; color: var(--ink-faint); }
+footer.foot { margin: 72px 0 48px; padding-top: 22px; border-top: 1px solid var(--line); font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-faint); display: flex; flex-wrap: wrap; gap: 8px 22px; }
+footer.foot a { color: var(--ink-dim); border: 0; }
+footer.foot a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+<script>
+  // 与主页共用一份偏好:同一个 localStorage 键决定暗色 / 亮色主题。
+  try { var p = JSON.parse(localStorage.getItem("bobochang-home") || "{}"); if (p.theme === "chart" || p.theme === "night") document.documentElement.dataset.theme = p.theme; if (p.hue != null) document.documentElement.style.setProperty("--accent-h", String(p.hue)); } catch (e) {}
+</script>
+<div class="wrap">
+  <nav class="top" aria-label="site">
+    <a class="wordmark" href="/">◈ BOBOCHANG</a>
+    <a href="/#fleet">projects</a>
+  </nav>
+  <div class="kicker">WRITING · TECHNICAL NOTE</div>
+  <h1>Unicode braille is an 8-pixel bitmap font</h1>
+  <p class="byline"><a href="https://bobochang.cn/">bobochang</a> · <time datetime="2026-09-14">2026-09-14</time> · <a href="https://github.com/can4hou6joeng4/Semaphore">source of the engine discussed</a></p>
+  <article>
+<p><em>Written against <a href="https://github.com/can4hou6joeng4/Semaphore/blob/main/src/ascii-engine.ts"><code>src/ascii-engine.ts</code></a> as of commit 46a5f63 (the file&#39;s last change)
+and reviewed against it line by line; code blocks are quoted verbatim except where
+marked. Figures were rendered with the shipped engine and font in Chrome 152 on macOS.</em></p>
+<hr>
+<p>I built a browser image-to-text converter. Most of it is unremarkable. This is the part
+that turned out to be interesting.</p>
+<p>Classic ASCII art has a resolution problem that a longer ramp cannot fix. One text cell
+becomes one character, and that character has to carry the brightness of everything the
+cell covered. A ten-step ramp like <code> .:-=+*#%@</code> gives you ten shades; a sixty-eight
+step ramp gives you sixty-eight. Either way the <em>spatial</em> resolution is one sample per
+cell, and a face at 120 columns is 120 samples wide. The result looks like a 120-pixel
+thumbnail blown up to full screen: the tone is roughly right, the edges are gone.</p>
+<p>Braille fixes the spatial problem, not the tonal one.</p>
+<p>(Not ASCII, strictly — braille is Unicode — but the genre kept the name.)</p>
+<h2>A character that is secretly a bitmap</h2>
+<p>Unicode block U+2800 to U+28FF holds 256 characters. That is not a coincidence. Each one
+is a 2-column by 4-row grid of dots, and every possible on/off pattern has its own code
+point. Eight dots, two states each, 2^8 = 256 patterns. A braille character is an
+8-pixel bitmap you can paste into a text field.</p>
+<p>Unicode numbers the dots 1 through 8 like this, and dot <em>n</em> sets bit <em>n−1</em> of the offset
+from U+2800:</p>
+<pre><code>1 4        ⠁ ⠈
+2 5        ⠂ ⠐
+3 6        ⠄ ⠠
+7 8        ⡀ ⢀
+</code></pre>
+<p>The odd ordering — 7 and 8 sitting below 3 and 6 instead of continuing the columns — is
+historical: six-dot braille came first, and the bottom row was appended later for
+computer braille. In code it is one table indexed <code>[row][column]</code>:</p>
+<pre><code class="language-ts">const BITS = [[0x01, 0x08], [0x02, 0x10], [0x04, 0x20], [0x40, 0x80]];
+</code></pre>
+<p>To emit one character you read eight luminance values, threshold each, OR the matching
+bit into <code>0x2800</code>, and call <code>String.fromCharCode</code>. The whole packer, colour handling
+removed:</p>
+<pre><code class="language-ts">for (let r = 0; r &lt; rows; r++) {
+  let line = &quot;&quot;;
+  for (let q = 0; q &lt; cols; q++) {
+    let code = 0x2800;
+    for (let dy = 0; dy &lt; 4; dy++) {
+      for (let dx = 0; dx &lt; 2; dx++) {
+        const gx = q * 2 + dx, gy = r * 4 + dy;
+        const gi = gy * gw + gx;
+        if (grid.lum[gi] &gt;= 128) code |= BITS[dy][dx];
+      }
+    }
+    line += String.fromCharCode(code);
+  }
+  lines[r] = line;
+}
+</code></pre>
+<p>None of this is new. drawille did it in 2014; chafa, notcurses and btop draw their
+graphs on the same grid. What follows is the part those tools&#39; READMEs skip: why the
+naive version looks terrible and what the fix actually does.</p>
+<h2>What the grid buys, and what it costs</h2>
+<p>For <em>C</em> columns and <em>R</em> rows, a ramp charset samples the image at <em>C × R</em> points. Braille
+samples it at <em>2C × 4R</em>: eight times as many, in the same number of characters, and the
+output is still plain text. At 120 columns that is 240 samples across. A face keeps its
+eye sockets; lettering in a logo stays legible.</p>
+<p><img src="images/braille-1-ramp-vs-braille.webp" alt="Left: the 68-step detailed ramp at 120 columns, 70 rows. Right: braille at 120 columns, dithered, 80 rows. Same portrait; the braille side keeps the eye sockets and the line of the jaw that the ramp smears."></p>
+<p><em>Same source, 120 columns. Left: <code>detailed</code> ramp, 68 steps. Right: braille, dithered. Both are plain text; the right one has eight times as many samples.</em></p>
+<p>The cost is tone. Each dot is on or off, so a braille character has no notion of medium
+grey. Threshold a smooth gradient at 50% and you get a hard edge where it crosses the
+midpoint, flat black on one side, flat white on the other. Every pixel darker than the
+threshold becomes 0, every lighter one 1, and everything about <em>how much</em> darker is gone.</p>
+<p><img src="images/braille-2-threshold-vs-dither.webp" alt="Left: braille thresholded at 50 percent with no dither, flat black and flat white with a hard edge between them. Right: the same photo with Floyd–Steinberg error diffusion, mid-tones rendered as dot density."></p>
+<p><em>Same photo, same grid. Left: every sample thresholded at 50%. Right: Floyd–Steinberg. The right side is the one this article is about.</em></p>
+<h2>Error diffusion</h2>
+<p>Floyd and Steinberg published the fix in 1976, for exactly this situation: getting
+continuous tone out of a device that can only put a dot or not put a dot.</p>
+<p>Walk the pixels left to right, top to bottom. At each one, snap to the nearest
+representable value — 0 or 255 — and compute the error you just made. Instead of
+discarding it, push it onto the neighbours you have not visited yet, in fixed
+proportions:</p>
+<pre><code>          [ X ]  7/16
+   3/16   5/16   1/16
+</code></pre>
+<p>The sixteenths sum to one, so no brightness is created or destroyed; it is moved. A
+region that is 30% grey ends up with about 30% of its dots lit. From far enough away the
+density reads as grey. Up close it reads as dot-matrix texture — and with braille, whose
+glyphs are drawn as dots with gaps between them, up close is where the reader usually is.
+That is the honest limit of the technique, not a flaw in the implementation.</p>
+<p>The function, verbatim, on a <code>Float32Array</code> of luminance values:</p>
+<pre><code class="language-ts">function ditherFS(lum: Float32Array, w: number, h: number): void {
+  for (let y = 0; y &lt; h; y++) {
+    for (let x = 0; x &lt; w; x++) {
+      const i = y * w + x;
+      const oldv = lum[i];
+      const newv = oldv &lt; 128 ? 0 : 255;
+      const err = oldv - newv;
+      lum[i] = newv;
+      if (x + 1 &lt; w)            lum[i + 1]     += err * 7 / 16;
+      if (y + 1 &lt; h) {
+        if (x &gt; 0)              lum[i + w - 1] += err * 3 / 16;
+                                lum[i + w]     += err * 5 / 16;
+        if (x + 1 &lt; w)          lum[i + w + 1] += err * 1 / 16;
+      }
+    }
+  }
+}
+</code></pre>
+<p>Two things about it matter more than the coefficients.</p>
+<p><strong>It runs on the dot grid, not the character grid.</strong> The luminance array is 2C × 4R.
+Dithering happens before any dot is packed into a character, so the character boundary
+is invisible to it: error flows freely from the bottom-right dot of one cell into the
+top-left dot of the next. Do it the other way round — dither at C × R and then expand —
+and every cell comes out all-eight-on or all-off, which is just a two-shade ramp wearing
+braille clothes. This one ordering decision is the difference between the two halves of
+the second before/after.</p>
+<p><strong>It is a float array, not bytes.</strong> Luminance is fractional before dithering ever starts
+(it is a weighted sum of three integers), and the forward-pushed error routinely takes a
+cell past 255 or below 0 before the loop reaches it. Clamping to a byte at each step
+would discard that error in the highlights and shadows, and the tones there would drift.
+The array is mutated in place; a second buffer would work too, this is just simpler.</p>
+<p>Why Floyd–Steinberg and not Atkinson or a blue-noise mask? Because at this dot density
+the classic 50%-grey &quot;worm&quot; artefacts sit below one character cell and mostly vanish into
+the glyph gaps, and FS preserves total brightness where Atkinson deliberately drops
+about a quarter of it. I have not measured that claim beyond eyeballing; it is a
+default, not a result.</p>
+<h2>The pipeline, in order</h2>
+<ol>
+<li>Draw the source onto a canvas of exactly 2C × 4R pixels. The browser&#39;s own
+downscaler resamples it, with <code>imageSmoothingQuality = &quot;high&quot;</code>; from a 4000-pixel
+source into a 480-pixel canvas that is doing real work, and it is good enough that
+nothing further is done about aliasing.</li>
+<li>One <code>getImageData</code>. Per pixel: brightness and contrast adjustments per channel, then
+luminance, then invert. (Invert is applied after luminance in the code; since the
+weights sum to exactly 1, it is the same either way.)</li>
+<li><code>ditherFS</code> across the whole grid. It is optional — the tool exposes a toggle — but
+on by default.</li>
+<li>Pack: eight dots per cell, <code>&gt;= 128</code> lights a dot. After dithering every cell is
+already exactly 0 or 255, so the comparison only decides anything when dithering is
+off.</li>
+</ol>
+<p>Three full passes over a typed array, one canvas draw, one readback. It runs entirely in
+the tab; there is no server step because nothing here would benefit from one.</p>
+<h2>Luminance, and the gamma question</h2>
+<p>Reducing RGB to one number is a weighted sum, because the eye is far more sensitive to
+green than to blue:</p>
+<pre><code class="language-ts">L = 0.2126 * r + 0.7152 * g + 0.0722 * bl;
+</code></pre>
+<p>Those are the Rec. 709 coefficients. Getting them wrong — an unweighted average — makes
+saturated blues read too bright and greens too dark, and it shows in the output.</p>
+<p>Now the objection a colour scientist will raise. The values that come out of a canvas are
+sRGB-encoded, gamma-compressed. Rec. 709 defines two quantities with these weights:
+<em>luminance</em> Y over linear light, and <em>luma</em> Y′ over the gamma-encoded components. This
+code computes Y′. That is a standard quantity — it is what television actually
+transmits — but it is not the physically correct brightness of a pixel. For neutral
+greys the two agree exactly. For saturated colours Y′ underestimates, so a strongly
+coloured region comes out a little darker than it should.</p>
+<p>I have not measured how much that matters on 1-bit dithered output at this resolution.
+The correct version — linearise each channel, weight, re-encode — is about ten lines and
+I have not shipped it, because I have not seen the difference on a real image yet. If
+someone posts a side-by-side that shows it, I will switch.</p>
+<h2>Cells are not square</h2>
+<p>A monospace cell is taller than it is wide — roughly three parts wide to five tall at
+line-height 1, though it varies by font. Row count has to account for that:</p>
+<pre><code class="language-ts">const rows = Math.max(1, Math.round((rect.sh / rect.sw) * cols / aspect));
+</code></pre>
+<p>For <code>aspect = 1/0.6</code>, a square image at 120 columns comes out 72 rows, not 120. Skip
+this and every face is stretched vertically by two thirds. It is the most common defect
+I have seen in home-grown converters.</p>
+<p>It also ties back to the title. Split a 3:5 cell into 2 × 4 and each dot covers
+0.30 × 0.25 of the cell — very nearly square. That is why braille works as pixels at all,
+where a 1 × 2 split of the same cell would not.</p>
+<p><img src="images/braille-3-aspect.webp" alt="Left: braille rendered with cellAspect 1, 117 rows, the face stretched tall. Right: cellAspect derived from the measured 0.68em advance of the fallback braille font, 80 rows, correct proportions."></p>
+<p><em>Same source, 120 columns. Left: <code>cellAspect: 1</code>, as if cells were square — 117 rows. Right: the aspect derived from the measured advance of the braille fallback face — 80 rows.</em></p>
+<p>Where does <code>aspect</code> come from? Not from a constant, in the shipped tool. JetBrains Mono,
+which the site uses for everything else, ships zero of the 256 braille glyphs — I parsed
+the font&#39;s cmap to check — and so does Menlo. Braille therefore renders in whatever
+fallback face the OS supplies, and that face&#39;s cell width is not the primary font&#39;s. So
+the page measures it: fifty copies of <code>⣿</code> in a hidden span at 100px, width divided by
+5000, and both the row count and the fitted font size derive from that number. On the
+Mac I am typing this on (Chrome 152, Apple Braille as the fallback) it measures 0.684em,
+not 0.60, so the 1100×1069 sample portrait at 120 columns comes out at 80 rows instead
+of 70. The engine only names the glyph to measure; the page does the measuring. <code>1/0.6</code> is what you get if you call the engine bare
+and pass nothing.</p>
+<p>In a README or a chat window you are at the mercy of the renderer, which is why braille
+is the highest-detail option and not the default one. If you want the most detail a text
+field can carry, this is it. If you want the output to survive anywhere,
+<code> .:-=+*#%@</code> is still the safe bet, and knowing which you need is most of the craft.</p>
+<hr>
+<p><em>The converter is at <a href="https://semaphore.bobochang.cn/">semaphore.bobochang.cn</a>; source
+is MIT on GitHub, and the engine is one file, <code>src/ascii-engine.ts</code>. The <a href="https://semaphore.bobochang.cn/charsets/braille">braille charset
+page</a> renders a live example of the pipeline above.</em></p>
+<hr>
+
+  </article>
+  <footer class="foot">
+    <span>© 2026 Bobochang</span>
+    <a href="/">home</a>
+    <a href="https://semaphore.bobochang.cn/">Semaphore</a>
+    <a href="https://github.com/can4hou6joeng4">GitHub</a>
+  </footer>
+</div>
+</body>
+</html>
