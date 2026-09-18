@@ -49,9 +49,7 @@ python3 scripts/refresh-data.py   # 需已登录的 gh CLI
 | 项目 | 用途 |
 |---|---|
 | 🤖 [boss-agent-cli](https://github.com/can4hou6joeng4/boss-agent-cli) | BOSS 直聘 agent CLI |
-| ⚓ [Harbor](https://github.com/can4hou6joeng4/Harbor) | 本地优先 Mac 阅读收藏 |
 | 🗼 [Beacon](https://github.com/can4hou6joeng4/Beacon) | PDF 证件有效期审计 |
-| 🗺️ [Atlas](https://github.com/can4hou6joeng4/Atlas) | AI 编程用量菜单栏应用 |
 | ⏱️ [Watch](https://github.com/can4hou6joeng4/Watch) | 跨 CLI 编程 Agent 本地会话接力 · [relay.bobochang.cn](https://relay.bobochang.cn) |
 | 🚩 [Semaphore](https://github.com/can4hou6joeng4/Semaphore) | 浏览器本地 ASCII 艺术 |
 | 🎣 [Trawl](https://github.com/can4hou6joeng4/Trawl) | 法律文书结构化取证台 |
