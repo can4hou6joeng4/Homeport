@@ -46,36 +46,61 @@ const SITE = {
     zh: "数据与动态",
     en: "Activity"
   }, {
-    id: "captain",
-    zh: "关于",
-    en: "About"
-  }, {
     id: "moorings",
     zh: "链接",
     en: "Links"
   }],
   hero: {
     name: "Bobochang",
-    roles: {
-      zh: "AI Agent 开发者 · 全栈工程师 · 开源维护者",
-      en: "AI Agent Developer · Full Stack Engineer · Open Source Maintainer"
-    },
+    headlineLead: "Think Faster.",
+    headlineSub: "Master Your Mind.",
     tagline: {
       zh: "为 AI Agent 构建可靠的工具、自动化系统与开发者工作流。",
       en: "Reliable tools, automation systems, and developer workflows for AI agents."
     },
     bio: {
-      zh: "独立项目，共享同一套工程原则：明确边界、本地优先、自动化可验证、默认低风险。",
-      en: "Independent projects, guided by the same engineering principles: explicit boundaries, local-first design, verifiable automation, and low-risk defaults."
+      zh: "专注于 AI Agent 工具链与本地自动化系统。",
+      en: "Focusing on AI agent toolchains and local-first automation systems."
     },
+    featureCards: [{
+      icon: "solar:cpu-linear",
+      title: {
+        zh: "AI Agent 工具链",
+        en: "AI Agent Toolchains"
+      },
+      desc: {
+        zh: "构建可供 Agent 直接调用的标准 CLI 与 MCP 工具，确立明确边界与合规 JSON 输出。",
+        en: "Standardized CLIs and MCP skills built for direct agent usage, with explicit boundaries and structured JSON outputs."
+      }
+    }, {
+      icon: "solar:pulse-linear",
+      title: {
+        zh: "可验证自动化系统",
+        en: "Verifiable Automation"
+      },
+      desc: {
+        zh: "从跨 CLI 会话接力到定时运行与证件审计，把不可靠的人工作业转化为稳定高可用系统。",
+        en: "From cross-CLI session handoff to automated routines and audits, turning friction into reliable systems."
+      }
+    }, {
+      icon: "solar:shield-check-linear",
+      title: {
+        zh: "明确边界 · 本地优先",
+        en: "Local-First & Low Risk"
+      },
+      desc: {
+        zh: "敏感数据与凭据留在本机，默认低风险、合规运行，无需繁重云端依赖与数据上云。",
+        en: "Sensitive data and credentials kept on-device with low-risk defaults and zero unnecessary lock-in."
+      }
+    }],
     ctaFleet: {
-      zh: "查看项目",
-      en: "View projects"
+      zh: "查看开源作品",
+      en: "Explore Projects"
     },
     ctaGithub: "GitHub",
     vessels: {
-      zh: "7 个开源项目",
-      en: "7 open-source projects"
+      zh: "8 个开源项目",
+      en: "8 open-source projects"
     },
     routeLabel: {
       zh: "项目记录 · 2024 — 2026",
@@ -110,17 +135,8 @@ const SITE = {
         en: "A snapshot of GitHub projects and public activity from the past year."
       }
     },
-    captain: {
-      no: "04",
-      zh: "关于",
-      en: "About",
-      sub: {
-        zh: "我的方向、工程原则与常用工具。",
-        en: "Focus areas, engineering principles, and the tools I use."
-      }
-    },
     moorings: {
-      no: "05",
+      no: "04",
       zh: "链接",
       en: "Links",
       sub: {
@@ -374,64 +390,13 @@ const SITE = {
       pct: 3
     }]
   },
-  captain: {
-    paras: [{
-      zh: "常驻广州，专注 AI Agent 工具链、CLI、自动化和本地优先应用：让 Agent 直接使用工具，让重复流程能够稳定运行，让敏感数据尽量留在本机。",
-      en: "Based in Guangzhou, I focus on AI-agent toolchains, CLIs, automation, and local-first applications: tools agents can use directly, repeatable workflows that run reliably, and sensitive data kept on-device where practical."
-    }, {
-      zh: "把重复劳动变成可靠系统。",
-      en: "Turn repeated work into reliable systems."
-    }],
-    philosophy: {
-      quote: {
-        zh: "GitHub 仓库命名：一个单词、一个意象、一个 emoji。",
-        en: "GitHub repository naming: one word, one image, one emoji."
-      },
-      source: {
-        zh: "仓库命名原则",
-        en: "Repository naming principle"
-      }
-    },
-    groups: [{
-      k: {
-        zh: "语言",
-        en: "Languages"
-      },
-      items: ["Python", "TypeScript", "Go", "Swift", "JavaScript"]
-    }, {
-      k: {
-        zh: "方向",
-        en: "Focus"
-      },
-      items: ["AI Agents", "MCP", {
-        zh: "CLI 工具",
-        en: "CLI tools"
-      }, {
-        zh: "macOS 应用",
-        en: "macOS apps"
-      }, "Serverless", {
-        zh: "自动化 & OCR",
-        en: "Automation & OCR"
-      }]
-    }, {
-      k: {
-        zh: "工具栈",
-        en: "Tool stack"
-      },
-      items: ["Claude Code", "GitHub Actions", "Cloudflare", "SwiftUI", "Playwright", "Wails", "Vite", "Next.js"]
-    }],
-    location: {
-      zh: "广州 · 中国",
-      en: "Guangzhou · China"
-    }
-  },
   moorings: [{
     icon: "github",
     name: "GitHub",
     handle: "@can4hou6joeng4",
     url: "https://github.com/can4hou6joeng4",
     note: {
-      zh: "开源项目与代码",
+      zh: "开源项目与代码仓库",
       en: "Open-source projects and code"
     }
   }, {
@@ -443,8 +408,8 @@ const SITE = {
     handle: "juejin.cn",
     url: "https://juejin.cn/user/1187904004821262",
     note: {
-      zh: "中文技术文章",
-      en: "Technical writing in Chinese"
+      zh: "技术博客与文章沉淀",
+      en: "Technical writing and articles"
     }
   }, {
     icon: "book",
@@ -455,8 +420,8 @@ const SITE = {
     handle: "bobochang.cn/writing",
     url: "/writing/unicode-braille-8-pixel-bitmap-font/",
     note: {
-      zh: "盲文点阵与误差扩散",
-      en: "Braille bitmaps and error diffusion"
+      zh: "盲文点阵与字体渲染实验",
+      en: "Braille bitmaps and font experiments"
     },
     external: false
   }, {
@@ -470,15 +435,6 @@ const SITE = {
     note: {
       zh: "bobochang.cn 的构建与发布",
       en: "Build and publishing source for bobochang.cn"
-    }
-  }, {
-    icon: "grid",
-    name: "CheckMyGit",
-    handle: "bento",
-    url: "https://checkmygit.com/can4hou6joeng4?template=bento",
-    note: {
-      zh: "交互式档案",
-      en: "Interactive profile"
     }
   }],
   footer: {
@@ -878,6 +834,22 @@ const IconGitHub = ({
 }, /*#__PURE__*/React.createElement("path", {
   d: "M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
 }));
+const IconBrain = ({
+  size = 16
+}) => /*#__PURE__*/React.createElement(LineIcon, {
+  size: size
+}, /*#__PURE__*/React.createElement("path", {
+  d: "M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04z"
+}), /*#__PURE__*/React.createElement("path", {
+  d: "M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z"
+}));
+const IconShield = ({
+  size = 16
+}) => /*#__PURE__*/React.createElement(LineIcon, {
+  size: size
+}, /*#__PURE__*/React.createElement("path", {
+  d: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
+}));
 
 // 罗盘玫瑰:72 刻度环 + 三重圆环 + 八角星芒。纯线稿,颜色随 currentColor。
 const CompassRose = () => {
@@ -1047,372 +1019,172 @@ Object.assign(window, {
   IconFlag,
   IconStar,
   IconGitHub,
+  IconBrain,
+  IconShield,
   CompassRose,
   ContourField,
   FooterWaves
 });
-// components.jsx — Nexus 技术视觉语言下的个人主页展示组件。
+// components.jsx — Neuform 视觉系统重构版个人主页组件
 // 全局依赖：SITE / tr / LANG_COLORS(data.jsx)、图标(icons.jsx)。
 
-const FIELD_LABELS = [{
-  top: "18%",
-  left: "7%",
-  text: "NODE.01"
-}, {
-  top: "34%",
-  left: "84%",
-  text: "SYNC.92"
-}, {
-  top: "67%",
-  left: "12%",
-  text: "CORTEX.M9"
-}, {
-  top: "81%",
-  left: "76%",
-  text: "PORT.113"
-}];
-const SignalField = () => {
-  const canvasRef = React.useRef(null);
-  React.useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return undefined;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return undefined;
-    let width = 0;
-    let height = 0;
-    let dpr = 1;
-    let frame = 0;
-    let nodes = [];
-    let pointerX = 0;
-    let pointerY = 0;
-    let targetX = 0;
-    let targetY = 0;
-    const noise = n => {
-      const x = Math.sin(n * 91.313 + 17.17) * 43758.5453;
-      return x - Math.floor(x);
-    };
-    const makeNodes = () => {
-      const count = Math.max(38, Math.min(72, Math.round(width / 24)));
-      nodes = Array.from({
-        length: count
-      }, (_, i) => ({
-        x: noise(i + 2) * width,
-        y: noise(i + 71) * height,
-        z: 0.45 + noise(i + 149) * 0.8,
-        phase: noise(i + 233) * Math.PI * 2
-      }));
-    };
-    const resize = () => {
-      const rect = canvas.getBoundingClientRect();
-      width = Math.max(1, rect.width);
-      height = Math.max(1, rect.height);
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      canvas.width = Math.round(width * dpr);
-      canvas.height = Math.round(height * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      makeNodes();
-    };
-    const move = event => {
-      targetX = event.clientX / Math.max(window.innerWidth, 1) - 0.5;
-      targetY = event.clientY / Math.max(window.innerHeight, 1) - 0.5;
-    };
-    const draw = time => {
-      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      const motionOff = document.documentElement.dataset.motion === "off";
-      const hue = Number(getComputedStyle(document.documentElement).getPropertyValue("--accent-h")) || 292;
-      const dark = document.documentElement.dataset.theme !== "chart";
-      const t = reduce || motionOff ? 0 : time * 0.00022;
-      pointerX += (targetX - pointerX) * 0.035;
-      pointerY += (targetY - pointerY) * 0.035;
-      ctx.clearRect(0, 0, width, height);
-      const points = nodes.map((node, i) => ({
-        x: node.x + Math.sin(t * node.z + node.phase) * 7 + pointerX * (8 + node.z * 10),
-        y: node.y + Math.cos(t * 0.8 * node.z + node.phase) * 5 + pointerY * (6 + node.z * 8),
-        z: node.z,
-        i
-      }));
-      const maxDistance = Math.min(170, Math.max(112, width * 0.12));
-      ctx.lineWidth = 0.7;
-      for (let i = 0; i < points.length; i += 1) {
-        for (let j = i + 1; j < points.length; j += 1) {
-          const dx = points[i].x - points[j].x;
-          const dy = points[i].y - points[j].y;
-          const dist = Math.hypot(dx, dy);
-          if (dist > maxDistance) continue;
-          const alpha = (1 - dist / maxDistance) * (dark ? 0.13 : 0.1);
-          ctx.strokeStyle = `hsla(${hue}, 88%, ${dark ? 70 : 46}%, ${alpha})`;
-          ctx.beginPath();
-          ctx.moveTo(points[i].x, points[i].y);
-          ctx.lineTo(points[j].x, points[j].y);
-          ctx.stroke();
-        }
-      }
-      points.forEach((point, i) => {
-        const pulse = 0.58 + Math.sin(t * 4 + i) * 0.22;
-        ctx.fillStyle = `hsla(${hue + (i % 5 === 0 ? 26 : 0)}, 92%, ${dark ? 72 : 45}%, ${0.18 + pulse * 0.28})`;
-        const size = i % 9 === 0 ? 2.1 : 1.2;
-        ctx.fillRect(point.x - size / 2, point.y - size / 2, size, size);
-      });
-      for (let k = 0; k < 5; k += 1) {
-        const from = points[(k * 11 + 3) % points.length];
-        const to = points[(k * 17 + 19) % points.length];
-        const progress = (t * (0.46 + k * 0.035) + k * 0.19) % 1;
-        const x = from.x + (to.x - from.x) * progress;
-        const y = from.y + (to.y - from.y) * progress;
-        ctx.save();
-        ctx.translate(x, y);
-        ctx.rotate(t + k);
-        ctx.shadowColor = `hsla(${hue + 22}, 95%, 67%, 0.8)`;
-        ctx.shadowBlur = 12;
-        ctx.fillStyle = `hsla(${hue + 22}, 95%, 72%, ${dark ? 0.9 : 0.7})`;
-        ctx.fillRect(-2.5, -2.5, 5, 5);
-        ctx.restore();
-      }
-      frame = window.requestAnimationFrame(draw);
-    };
-    resize();
-    window.addEventListener("resize", resize);
-    window.addEventListener("pointermove", move, {
-      passive: true
-    });
-    frame = window.requestAnimationFrame(draw);
-    return () => {
-      window.cancelAnimationFrame(frame);
-      window.removeEventListener("resize", resize);
-      window.removeEventListener("pointermove", move);
-    };
-  }, []);
-  return /*#__PURE__*/React.createElement("canvas", {
-    ref: canvasRef,
-    className: "signal-canvas",
-    "aria-hidden": "true"
-  });
-};
-const ChartLayer = () => /*#__PURE__*/React.createElement("div", {
-  className: "chart-layer",
-  "aria-hidden": "true"
-}, /*#__PURE__*/React.createElement("div", {
-  className: "matrix-grid"
-}), /*#__PURE__*/React.createElement(SignalField, null), FIELD_LABELS.map(label => /*#__PURE__*/React.createElement("span", {
-  key: label.text,
-  className: "field-label",
-  style: {
-    top: label.top,
-    left: label.left
-  }
-}, label.text)));
-const Topbar = ({
-  lang,
-  theme,
-  onLang,
-  onTheme
-}) => /*#__PURE__*/React.createElement("header", {
-  className: "topbar"
-}, /*#__PURE__*/React.createElement("div", {
-  className: "topbar-shell"
-}, /*#__PURE__*/React.createElement("a", {
-  className: "wordmark",
-  href: "#top"
-}, /*#__PURE__*/React.createElement(IconNetwork, {
-  size: 16
-}), /*#__PURE__*/React.createElement("span", null, "BOBO.LINK")), /*#__PURE__*/React.createElement("nav", {
-  className: "nav",
-  "aria-label": lang === "zh" ? "主页分区" : "Homepage sections"
-}, SITE.nav.map(n => /*#__PURE__*/React.createElement("a", {
-  key: n.id,
-  href: `#${n.id}`
-}, tr(n, lang)))), /*#__PURE__*/React.createElement("div", {
-  className: "controls"
-}, /*#__PURE__*/React.createElement("div", {
-  className: "seg",
-  role: "group",
-  "aria-label": "Language / 语言"
-}, /*#__PURE__*/React.createElement("button", {
-  type: "button",
-  className: lang === "zh" ? "on" : "",
-  onClick: () => onLang("zh")
-}, "中"), /*#__PURE__*/React.createElement("button", {
-  type: "button",
-  className: lang === "en" ? "on" : "",
-  onClick: () => onLang("en")
-}, "EN")), /*#__PURE__*/React.createElement("button", {
-  type: "button",
-  className: "icon-btn",
-  onClick: onTheme,
-  "aria-label": theme === "night" ? tr(SITE.tweaks.chart, lang) : tr(SITE.tweaks.night, lang),
-  title: theme === "night" ? tr(SITE.tweaks.chart, lang) : tr(SITE.tweaks.night, lang)
-}, theme === "night" ? /*#__PURE__*/React.createElement(IconSun, {
-  size: 15
-}) : /*#__PURE__*/React.createElement(IconMoon, {
-  size: 15
-})))));
 const StatusDot = ({
-  label
+  label = "ONLINE",
+  color = "bg-emerald-400"
 }) => /*#__PURE__*/React.createElement("span", {
-  className: "status"
+  className: "inline-flex items-center gap-1.5 text-[11px] font-mono tracking-wider text-zinc-400 uppercase"
 }, /*#__PURE__*/React.createElement("span", {
-  className: "status-dot"
+  className: `w-1.5 h-1.5 rounded-full ${color} animate-pulse`
 }), label);
-const CoreGlyph = () => /*#__PURE__*/React.createElement("div", {
-  className: "core-glyph",
-  "aria-hidden": "true"
-}, /*#__PURE__*/React.createElement("span", {
-  className: "core-ring ring-a"
-}), /*#__PURE__*/React.createElement("span", {
-  className: "core-ring ring-b"
-}), /*#__PURE__*/React.createElement("span", {
-  className: "core-diamond diamond-a"
-}), /*#__PURE__*/React.createElement("span", {
-  className: "core-diamond diamond-b"
-}), /*#__PURE__*/React.createElement("span", {
-  className: "core-axis axis-x"
-}), /*#__PURE__*/React.createElement("span", {
-  className: "core-axis axis-y"
-}));
-const Hero = ({
-  lang
-}) => {
-  const h = SITE.hero;
-  const flagship = SITE.flagship;
-  return /*#__PURE__*/React.createElement("section", {
-    className: "hero",
-    id: "top",
-    "data-screen-label": "Home 主页"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "wrap hero-wrap"
-  }, /*#__PURE__*/React.createElement("header", {
-    className: "hero-heading reveal"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "system-line"
-  }, /*#__PURE__*/React.createElement(StatusDot, {
-    label: lang === "zh" ? "主页在线" : "HOMEPAGE ONLINE"
-  }), /*#__PURE__*/React.createElement("span", null, SITE.meta.coords)), /*#__PURE__*/React.createElement("h1", null, "Bobochang"), /*#__PURE__*/React.createElement("p", {
-    className: "roles"
-  }, tr(h.roles, lang))), /*#__PURE__*/React.createElement("div", {
-    className: "hero-stage",
-    "aria-label": lang === "zh" ? "个人主页核心系统" : "Personal homepage core system"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "stage-frame",
-    "aria-hidden": "true"
-  }), /*#__PURE__*/React.createElement(CoreGlyph, null), /*#__PURE__*/React.createElement("article", {
-    className: "hero-panel load-panel reveal",
-    "data-tilt": true,
-    style: {
-      "--d": "0.08s"
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "panel-k"
-  }, /*#__PURE__*/React.createElement("span", null, "SYS.LOAD"), /*#__PURE__*/React.createElement(IconPulse, {
-    size: 15
-  })), /*#__PURE__*/React.createElement("div", {
-    className: "load-visual",
-    "aria-hidden": "true"
-  }, /*#__PURE__*/React.createElement("span", null), /*#__PURE__*/React.createElement("span", null), /*#__PURE__*/React.createElement("span", null), /*#__PURE__*/React.createElement("span", null)), /*#__PURE__*/React.createElement("h2", null, lang === "zh" ? "可靠系统" : "Reliable systems"), /*#__PURE__*/React.createElement("p", null, tr(h.bio, lang)), /*#__PURE__*/React.createElement("div", {
-    className: "meter-row"
-  }, /*#__PURE__*/React.createElement("span", null, "SYNC"), /*#__PURE__*/React.createElement("strong", null, "92%")), /*#__PURE__*/React.createElement("div", {
-    className: "meter"
-  }, /*#__PURE__*/React.createElement("span", null))), /*#__PURE__*/React.createElement("article", {
-    className: "hero-panel operator-panel reveal",
-    "data-tilt": true,
-    style: {
-      "--d": "0.14s"
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "operator-head"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "avatar"
-  }, "BC"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("strong", null, "Bobochang"), /*#__PURE__*/React.createElement("span", null, "OPEN SOURCE · BUILDER"))), /*#__PURE__*/React.createElement("div", {
-    className: "operator-state"
-  }, /*#__PURE__*/React.createElement("span", null, lang === "zh" ? "广州 · 珠江口" : "GUANGZHOU · PEARL RIVER"), /*#__PURE__*/React.createElement(StatusDot, {
-    label: "ACTIVE"
-  }))), /*#__PURE__*/React.createElement("article", {
-    className: "hero-panel core-panel reveal",
-    "data-tilt": true,
-    style: {
-      "--d": "0.2s"
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "core-head"
-  }, /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("i", null), " CORTEX_BC"), /*#__PURE__*/React.createElement(StatusDot, {
-    label: "SYNCHED"
-  })), /*#__PURE__*/React.createElement("div", {
-    className: "core-window"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "core-title-row"
-  }, /*#__PURE__*/React.createElement(IconTerminal, {
-    size: 17
-  }), /*#__PURE__*/React.createElement("span", null, "AGENT-FIRST WORKFLOW")), /*#__PURE__*/React.createElement("h2", null, tr(h.tagline, lang)), /*#__PURE__*/React.createElement("p", null, flagship.name, " · ", tr(flagship.desc, lang))), /*#__PURE__*/React.createElement("div", {
-    className: "core-actions"
-  }, /*#__PURE__*/React.createElement("a", {
-    className: "btn btn-primary",
-    href: "#fleet"
-  }, tr(h.ctaFleet, lang), /*#__PURE__*/React.createElement(IconArrowRight, {
-    size: 15
-  })), /*#__PURE__*/React.createElement("a", {
-    className: "btn btn-ghost",
-    href: SITE.meta.github,
-    target: "_blank",
-    rel: "noreferrer"
-  }, /*#__PURE__*/React.createElement(IconGitHub, {
-    size: 15
-  }), "GitHub ", /*#__PURE__*/React.createElement("span", {
-    className: "star-chip"
-  }, "★ ", flagship.stars)))), /*#__PURE__*/React.createElement("article", {
-    className: "hero-panel topology-panel reveal",
-    "data-tilt": true,
-    style: {
-      "--d": "0.25s"
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "panel-k"
-  }, /*#__PURE__*/React.createElement(IconNetwork, {
-    size: 15
-  }), /*#__PURE__*/React.createElement("span", null, "PROJECT.INDEX")), /*#__PURE__*/React.createElement("h2", null, tr(h.vessels, lang)), /*#__PURE__*/React.createElement("p", null, lang === "zh" ? "独立项目，共享同一套工程原则。" : "Independent projects, shared engineering principles."), /*#__PURE__*/React.createElement("div", {
-    className: "verify-line"
-  }, /*#__PURE__*/React.createElement("span", null), "VERIFY SOURCE")), /*#__PURE__*/React.createElement("article", {
-    className: "hero-panel asset-panel reveal",
-    "data-tilt": true,
-    style: {
-      "--d": "0.3s"
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "asset-art",
-    "aria-hidden": "true"
-  }, /*#__PURE__*/React.createElement("span", null), /*#__PURE__*/React.createElement("span", null), /*#__PURE__*/React.createElement("span", null)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("span", {
-    className: "asset-k"
-  }, "SOURCE"), /*#__PURE__*/React.createElement("strong", null, "bobochang.cn")), /*#__PURE__*/React.createElement(IconArrowUpRight, {
-    size: 15
-  }))), /*#__PURE__*/React.createElement("div", {
-    className: "hero-foot reveal",
-    style: {
-      "--d": "0.35s"
-    }
-  }, /*#__PURE__*/React.createElement("span", null, tr(h.routeLabel, lang)), /*#__PURE__*/React.createElement("a", {
-    href: "#flagship"
-  }, lang === "zh" ? "查看重点项目" : "VIEW FEATURED PROJECT", /*#__PURE__*/React.createElement(IconArrowRight, {
-    size: 14
-  })))));
-};
 const SectionHead = ({
   s,
   lang
 }) => {
   const other = lang === "zh" ? "en" : "zh";
   return /*#__PURE__*/React.createElement("header", {
-    className: "section-head reveal"
+    className: "mb-10 md:mb-14 reveal"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "chart-no"
-  }, /*#__PURE__*/React.createElement("span", null, "NODE ", s.no), /*#__PURE__*/React.createElement(StatusDot, {
+    className: "flex items-center justify-between gap-4 mb-3"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-2"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-xs font-mono font-medium px-2 py-0.5 rounded bg-white/[0.04] text-[#cc8066] border border-white/10"
+  }, "NODE ", s.no), /*#__PURE__*/React.createElement(StatusDot, {
     label: "ONLINE"
-  })), /*#__PURE__*/React.createElement("div", {
-    className: "section-title-row"
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-wrap items-baseline gap-3 md:gap-4 mb-2"
   }, /*#__PURE__*/React.createElement("h2", {
-    className: "section-title"
+    className: "text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white"
   }, tr(s, lang)), /*#__PURE__*/React.createElement("span", {
-    className: "section-alt"
-  }, tr(s, other))), /*#__PURE__*/React.createElement("p", {
-    className: "section-sub"
+    className: "text-sm sm:text-base font-mono text-zinc-500 uppercase tracking-wider"
+  }, "/ ", tr(s, other))), /*#__PURE__*/React.createElement("p", {
+    className: "text-sm md:text-base text-zinc-400 font-normal max-w-2xl leading-relaxed"
   }, tr(s.sub, lang)));
+};
+const Topbar = ({
+  lang,
+  theme,
+  onLang,
+  onTheme
+}) => /*#__PURE__*/React.createElement("nav", {
+  className: "flex items-center justify-between w-full py-4 border-b border-white/[0.06] backdrop-blur-xl bg-zinc-950/70 sticky top-0 z-50 transition-colors"
+}, /*#__PURE__*/React.createElement("a", {
+  href: "#top",
+  className: "flex items-center gap-2.5 text-base sm:text-lg font-medium text-white tracking-tight group"
+}, /*#__PURE__*/React.createElement("span", {
+  className: "w-2 h-2 rounded-full bg-emerald-400 animate-pulse"
+}), /*#__PURE__*/React.createElement("span", {
+  className: "font-semibold text-white tracking-tight"
+}, "Bobochang"), /*#__PURE__*/React.createElement("span", {
+  className: "hidden sm:inline text-xs font-mono text-zinc-400 border-l border-white/10 pl-2.5"
+}, "AI Agent Tools")), /*#__PURE__*/React.createElement("div", {
+  className: "hidden lg:flex items-center gap-8 text-sm font-normal text-zinc-300"
+}, SITE.nav.map(n => /*#__PURE__*/React.createElement("a", {
+  key: n.id,
+  href: `#${n.id}`,
+  className: "hover:text-white transition-colors duration-200"
+}, tr(n, lang)))), /*#__PURE__*/React.createElement("div", {
+  className: "flex items-center gap-3"
+}, /*#__PURE__*/React.createElement("div", {
+  className: "flex items-center p-0.5 border border-white/10 rounded bg-white/[0.04] text-xs font-mono"
+}, /*#__PURE__*/React.createElement("button", {
+  type: "button",
+  onClick: () => onLang("zh"),
+  className: `px-2 py-1 rounded transition-colors ${lang === "zh" ? "bg-white text-black font-semibold shadow" : "text-zinc-400 hover:text-white"}`,
+  "aria-label": "切换为中文"
+}, "中"), /*#__PURE__*/React.createElement("button", {
+  type: "button",
+  onClick: () => onLang("en"),
+  className: `px-2 py-1 rounded transition-colors ${lang === "en" ? "bg-white text-black font-semibold shadow" : "text-zinc-400 hover:text-white"}`,
+  "aria-label": "Switch to English"
+}, "EN")), /*#__PURE__*/React.createElement("button", {
+  type: "button",
+  onClick: onTheme,
+  className: "w-8 h-8 flex items-center justify-center border border-white/10 rounded text-zinc-300 hover:text-white hover:border-white/25 bg-white/[0.04] transition-colors",
+  "aria-label": theme === "night" ? "切换亮色主题" : "切换暗色主题",
+  title: theme === "night" ? "切换亮色主题" : "切换暗色主题"
+}, theme === "night" ? /*#__PURE__*/React.createElement(IconSun, {
+  size: 15
+}) : /*#__PURE__*/React.createElement(IconMoon, {
+  size: 15
+})), /*#__PURE__*/React.createElement("a", {
+  href: SITE.meta.github,
+  target: "_blank",
+  rel: "noreferrer",
+  className: "neu-btn-primary group"
+}, /*#__PURE__*/React.createElement("span", null, "GitHub"), /*#__PURE__*/React.createElement("div", {
+  className: "neu-btn-icon"
+}, /*#__PURE__*/React.createElement("iconify-icon", {
+  icon: "solar:arrow-right-up-linear",
+  width: "18",
+  "stroke-width": "1.5"
+})))));
+const Hero = ({
+  lang
+}) => {
+  const h = SITE.hero;
+  return /*#__PURE__*/React.createElement("main", {
+    className: "flex-grow flex flex-col justify-end pb-8 mt-16 md:mt-24",
+    id: "top"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "mb-16 md:mb-32 max-w-3xl"
+  }, /*#__PURE__*/React.createElement("h1", {
+    className: "text-5xl md:text-6xl lg:text-7xl tracking-tighter leading-[1.05] text-white",
+    id: "hero-title"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "reveal-line font-normal text-zinc-200 mb-1 md:mb-2",
+    "data-original-text": tr(h.headlineLead, lang)
+  }, tr(h.headlineLead, lang)), /*#__PURE__*/React.createElement("div", {
+    className: "reveal-line font-semibold text-white",
+    "data-original-text": tr(h.headlineSub, lang)
+  }, tr(h.headlineSub, lang)))), /*#__PURE__*/React.createElement("div", {
+    className: "grid grid-cols-1 lg:grid-cols-12 gap-8 items-end"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "col-span-1 lg:col-span-5 flex flex-col gap-3"
+  }, h.featureCards.map((card, idx) => /*#__PURE__*/React.createElement("div", {
+    key: idx,
+    className: "group relative flex items-start gap-4 p-5 transition-all duration-300 hover:translate-x-1 cursor-default neu-card rounded reveal",
+    style: {
+      "--d": `${0.06 * (idx + 1)}s`
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "mt-0.5 text-2xl text-white opacity-80 group-hover:opacity-100 transition-opacity"
+  }, /*#__PURE__*/React.createElement("iconify-icon", {
+    icon: card.icon,
+    width: "24",
+    "stroke-width": "1.5"
+  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", {
+    className: "font-medium text-white text-base tracking-tight mb-1"
+  }, tr(card.title, lang)), /*#__PURE__*/React.createElement("p", {
+    className: "text-zinc-400 text-sm font-normal leading-relaxed"
+  }, tr(card.desc, lang)))))), /*#__PURE__*/React.createElement("div", {
+    className: "col-span-1 lg:col-span-5 lg:col-start-8 flex flex-col items-start pb-2 reveal",
+    style: {
+      "--d": "0.24s"
+    }
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "text-zinc-300 text-base md:text-lg leading-relaxed mb-8 max-w-lg font-normal"
+  }, tr(h.bio, lang)), /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-wrap items-center gap-4"
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "#fleet",
+    className: "neu-btn-primary"
+  }, /*#__PURE__*/React.createElement("span", null, tr(h.ctaFleet, lang)), /*#__PURE__*/React.createElement("div", {
+    className: "neu-btn-icon"
+  }, /*#__PURE__*/React.createElement("iconify-icon", {
+    icon: "solar:arrow-right-up-linear",
+    width: "18",
+    "stroke-width": "1.5"
+  }))), /*#__PURE__*/React.createElement("a", {
+    href: SITE.meta.github,
+    target: "_blank",
+    rel: "noreferrer",
+    className: "neu-btn-secondary"
+  }, /*#__PURE__*/React.createElement(IconGitHub, {
+    size: 16
+  }), /*#__PURE__*/React.createElement("span", null, "GitHub @", SITE.meta.handle), /*#__PURE__*/React.createElement("span", {
+    className: "text-xs px-2 py-0.5 rounded bg-white/10 font-mono text-[#cc8066]"
+  }, "★ 2.0k"))))));
 };
 const FeaturedProject = ({
   lang
@@ -1420,156 +1192,210 @@ const FeaturedProject = ({
   const f = SITE.flagship;
   return /*#__PURE__*/React.createElement("section", {
     id: "flagship",
-    className: "section section-flagship",
-    "data-screen-label": "Featured Project 重点项目"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "wrap"
+    className: "py-20 md:py-28 border-t border-white/[0.06]"
   }, /*#__PURE__*/React.createElement(SectionHead, {
     s: SITE.sections.flagship,
     lang: lang
   }), /*#__PURE__*/React.createElement("div", {
-    className: "flagship-deck"
-  }, /*#__PURE__*/React.createElement("article", {
-    className: "flagship-overview reveal",
-    "data-tilt": true
+    className: "grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "flagship-signal"
+    className: "col-span-1 lg:col-span-5 flex flex-col justify-between neu-card p-6 md:p-8 rounded-xl reveal"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center justify-between gap-4 mb-6"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium bg-white/[0.04] text-[#cc8066] border border-white/10"
+  }, /*#__PURE__*/React.createElement(IconStar, {
+    size: 13
+  }), tr(f.pennant, lang)), /*#__PURE__*/React.createElement("span", {
+    className: "text-2xl",
+    "aria-hidden": "true"
+  }, f.emoji)), /*#__PURE__*/React.createElement("h3", {
+    className: "text-3xl md:text-4xl font-semibold tracking-tight text-white mb-3"
+  }, f.name), /*#__PURE__*/React.createElement("div", {
+    className: "inline-flex items-center gap-2 text-sm font-mono text-[#cc8066] mb-6 bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-md"
   }, /*#__PURE__*/React.createElement(IconStar, {
     size: 14
-  }), /*#__PURE__*/React.createElement("span", null, tr(f.pennant, lang))), /*#__PURE__*/React.createElement("div", {
-    className: "flagship-ident"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "ship-mark",
-    "aria-hidden": "true"
-  }, f.emoji), /*#__PURE__*/React.createElement("span", null, "PRIMARY NODE · 001")), /*#__PURE__*/React.createElement("h3", {
-    className: "flagship-name"
-  }, f.name), /*#__PURE__*/React.createElement("div", {
-    className: "flagship-stars"
-  }, /*#__PURE__*/React.createElement(IconStar, {
-    size: 16
-  }), /*#__PURE__*/React.createElement("strong", null, f.stars), /*#__PURE__*/React.createElement("span", null, tr(f.starsNote, lang))), /*#__PURE__*/React.createElement("p", {
-    className: "flagship-desc"
+  }), /*#__PURE__*/React.createElement("strong", {
+    className: "font-semibold text-white"
+  }, f.stars), /*#__PURE__*/React.createElement("span", {
+    className: "text-zinc-400 font-normal"
+  }, tr(f.starsNote, lang))), /*#__PURE__*/React.createElement("p", {
+    className: "text-zinc-300 text-sm md:text-base leading-relaxed mb-6 font-normal"
   }, tr(f.desc, lang)), /*#__PURE__*/React.createElement("div", {
-    className: "chips"
+    className: "flex flex-wrap gap-2 mb-8"
   }, f.tech.map(tech => /*#__PURE__*/React.createElement("span", {
     key: tech,
-    className: "chip"
-  }, tech))), /*#__PURE__*/React.createElement("div", {
-    className: "flagship-links"
+    className: "px-2.5 py-1 text-xs font-mono rounded bg-white/[0.04] text-zinc-300 border border-white/10 hover:border-white/20 transition-colors"
+  }, tech)))), /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-wrap items-center gap-3 pt-6 border-t border-white/10"
   }, f.links.map(link => /*#__PURE__*/React.createElement("a", {
     key: link.url,
-    className: "text-link",
     href: link.url,
     target: "_blank",
-    rel: "noreferrer"
+    rel: "noreferrer",
+    className: "neu-btn-secondary text-xs"
   }, link.icon === "github" ? /*#__PURE__*/React.createElement(IconGitHub, {
     size: 14
-  }) : /*#__PURE__*/React.createElement(IconArrowUpRight, {
+  }) : /*#__PURE__*/React.createElement(IconGlobe, {
     size: 14
-  }), tr(link.label, lang))))), /*#__PURE__*/React.createElement("div", {
-    className: "terminal-panel reveal",
+  }), /*#__PURE__*/React.createElement("span", null, tr(link.label, lang)), /*#__PURE__*/React.createElement(IconArrowUpRight, {
+    size: 13
+  }))))), /*#__PURE__*/React.createElement("div", {
+    className: "col-span-1 lg:col-span-7 terminal-neu rounded-xl overflow-hidden flex flex-col reveal",
     style: {
       "--d": "0.1s"
     }
   }, /*#__PURE__*/React.createElement("div", {
-    className: "term-head"
+    className: "flex items-center justify-between px-4 py-3 bg-white/[0.03] border-b border-white/[0.08]"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-2"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "term-mode"
-  }, "CORTEX_M9 · LIVE"), /*#__PURE__*/React.createElement(StatusDot, {
-    label: "SYNCHED"
+    className: "w-3 h-3 rounded-full bg-red-500/80"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "w-3 h-3 rounded-full bg-yellow-500/80"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "w-3 h-3 rounded-full bg-green-500/80"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "ml-2 text-xs font-mono text-zinc-400"
+  }, "CORTEX_M9 · LIVE PREVIEW")), /*#__PURE__*/React.createElement(StatusDot, {
+    label: "SYNCHED",
+    color: "bg-emerald-400"
   })), /*#__PURE__*/React.createElement("div", {
-    className: "term-visual",
-    "aria-hidden": "true"
-  }, /*#__PURE__*/React.createElement("span", null), /*#__PURE__*/React.createElement("span", null), /*#__PURE__*/React.createElement("span", null), /*#__PURE__*/React.createElement("span", null), /*#__PURE__*/React.createElement("span", null)), /*#__PURE__*/React.createElement("div", {
-    className: "term-body"
-  }, f.term.map((line, i) => /*#__PURE__*/React.createElement("div", {
-    key: i,
-    className: `t-${line.t}`
-  }, line.s)))))));
+    className: "p-5 md:p-6 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto flex-grow flex flex-col justify-between"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "space-y-2"
+  }, f.term.map((line, i) => {
+    if (line.t === "cmd") {
+      return /*#__PURE__*/React.createElement("div", {
+        key: i,
+        className: "flex items-start gap-2 t-cmd"
+      }, /*#__PURE__*/React.createElement("span", {
+        className: "text-zinc-500 select-none"
+      }, "$"), /*#__PURE__*/React.createElement("span", null, line.s));
+    }
+    if (line.t === "out") {
+      return /*#__PURE__*/React.createElement("div", {
+        key: i,
+        className: "t-out pl-4"
+      }, line.s);
+    }
+    if (line.t === "json") {
+      return /*#__PURE__*/React.createElement("div", {
+        key: i,
+        className: "t-json pl-4 whitespace-pre"
+      }, line.s);
+    }
+    if (line.t === "cursor") {
+      return /*#__PURE__*/React.createElement("div", {
+        key: i,
+        className: "flex items-center gap-2 pt-2"
+      }, /*#__PURE__*/React.createElement("span", {
+        className: "text-zinc-500 select-none"
+      }, "$"), /*#__PURE__*/React.createElement("span", {
+        className: "t-cursor"
+      }));
+    }
+    return /*#__PURE__*/React.createElement("div", {
+      key: i
+    }, line.s);
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between text-[11px] text-zinc-500"
+  }, /*#__PURE__*/React.createElement("span", null, "AGENT READY · LOW-RISK ENVELOPE"), /*#__PURE__*/React.createElement("span", null, "STDOUT 0.8s"))))));
 };
 const ProjectCard = ({
   s,
   i,
   lang
 }) => /*#__PURE__*/React.createElement("article", {
-  className: "ship-card reveal",
-  "data-tilt": true,
+  className: "neu-card p-6 rounded-xl flex flex-col justify-between reveal group",
   style: {
-    "--d": `${i % 3 * 0.06}s`
+    "--d": `${i % 3 * 0.08}s`
   }
-}, /*#__PURE__*/React.createElement("div", {
-  className: "ship-node-row"
-}, /*#__PURE__*/React.createElement("span", null, "NODE.", String(i + 2).padStart(2, "0")), /*#__PURE__*/React.createElement(StatusDot, {
+}, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+  className: "flex items-center justify-between mb-4"
+}, /*#__PURE__*/React.createElement("span", {
+  className: "text-xs font-mono text-zinc-500"
+}, "NODE.", String(i + 2).padStart(2, "0")), /*#__PURE__*/React.createElement(StatusDot, {
   label: "ONLINE"
 })), /*#__PURE__*/React.createElement("div", {
-  className: "ship-top"
-}, /*#__PURE__*/React.createElement("div", {
-  className: "ship-mark",
+  className: "flex items-center gap-3 mb-3"
+}, /*#__PURE__*/React.createElement("span", {
+  className: "text-2xl",
   "aria-hidden": "true"
 }, s.emoji), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", {
-  className: "ship-name"
+  className: "text-lg font-semibold text-white tracking-tight group-hover:text-white transition-colors"
 }, s.id), /*#__PURE__*/React.createElement("div", {
-  className: "ship-image"
+  className: "text-xs font-mono text-zinc-400"
 }, tr(s.image, lang)))), /*#__PURE__*/React.createElement("p", {
-  className: "ship-desc"
-}, tr(s.desc, lang)), /*#__PURE__*/React.createElement("div", {
-  className: "chips ship-tech"
-}, s.tech.slice(0, 3).map(tech => /*#__PURE__*/React.createElement("span", {
+  className: "text-zinc-300 text-sm leading-relaxed mb-6 font-normal"
+}, tr(s.desc, lang))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+  className: "flex flex-wrap gap-1.5 mb-5"
+}, s.tech.map(tech => /*#__PURE__*/React.createElement("span", {
   key: tech,
-  className: "chip"
+  className: "px-2 py-0.5 text-[11px] font-mono rounded bg-white/[0.03] text-zinc-400 border border-white/[0.08]"
 }, tech))), /*#__PURE__*/React.createElement("div", {
-  className: "ship-meta"
+  className: "flex items-center justify-between pt-4 border-t border-white/[0.06] text-xs font-mono text-zinc-400"
+}, /*#__PURE__*/React.createElement("div", {
+  className: "flex items-center gap-2"
 }, /*#__PURE__*/React.createElement("span", {
-  className: "lang-dot",
+  className: "w-2 h-2 rounded-full",
   style: {
     background: LANG_COLORS[s.lang] || LANG_COLORS.Other
   }
 }), /*#__PURE__*/React.createElement("span", null, s.lang), s.stars > 0 ? /*#__PURE__*/React.createElement("span", {
-  className: "meta-star"
+  className: "flex items-center gap-1 text-[#cc8066] ml-2 font-medium"
 }, /*#__PURE__*/React.createElement(IconStar, {
-  size: 10
-}), s.stars) : null, /*#__PURE__*/React.createElement("span", {
-  className: "spacer"
-}), /*#__PURE__*/React.createElement("a", {
-  className: "mini-link",
+  size: 11
+}), s.stars) : null), /*#__PURE__*/React.createElement("div", {
+  className: "flex items-center gap-2.5"
+}, /*#__PURE__*/React.createElement("a", {
   href: s.github,
   target: "_blank",
   rel: "noreferrer",
-  title: "GitHub"
+  className: "p-1 text-zinc-400 hover:text-white transition-colors",
+  title: "GitHub Repository"
 }, /*#__PURE__*/React.createElement(IconGitHub, {
   size: 15
 })), s.site ? /*#__PURE__*/React.createElement("a", {
-  className: "mini-link",
   href: s.site,
   target: "_blank",
   rel: "noreferrer",
-  title: s.siteLabel ? tr(s.siteLabel, lang) : "Site"
+  className: "p-1 text-zinc-400 hover:text-white transition-colors",
+  title: s.siteLabel ? tr(s.siteLabel, lang) : "Live Site"
 }, /*#__PURE__*/React.createElement(IconArrowUpRight, {
   size: 15
-})) : null));
+})) : null))));
 const Projects = ({
   lang
 }) => /*#__PURE__*/React.createElement("section", {
   id: "fleet",
-  className: "section",
-  "data-screen-label": "Projects 开源项目"
-}, /*#__PURE__*/React.createElement("div", {
-  className: "wrap"
+  className: "py-20 md:py-28 border-t border-white/[0.06]"
 }, /*#__PURE__*/React.createElement(SectionHead, {
   s: SITE.sections.fleet,
   lang: lang
 }), /*#__PURE__*/React.createElement("div", {
-  className: "fleet-grid"
+  className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
 }, SITE.fleet.map((project, i) => /*#__PURE__*/React.createElement(ProjectCard, {
   key: project.id,
   s: project,
   i: i,
   lang: lang
 }))), /*#__PURE__*/React.createElement("blockquote", {
-  className: "log-entry reveal"
+  className: "neu-card p-6 md:p-8 rounded-xl mt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-l-2 border-l-[#cc8066] reveal"
+}, /*#__PURE__*/React.createElement("div", {
+  className: "space-y-1"
 }, /*#__PURE__*/React.createElement("span", {
-  className: "log-k"
-}, lang === "zh" ? "SYSTEM SUMMARY · 工程原则" : "SYSTEM SUMMARY · ENGINEERING PRINCIPLES"), tr(SITE.fleetNarrative, lang))));
+  className: "text-xs font-mono uppercase tracking-wider text-[#cc8066] font-semibold block"
+}, lang === "zh" ? "SYSTEM SUMMARY · 工程原则" : "SYSTEM SUMMARY · ENGINEERING PRINCIPLES"), /*#__PURE__*/React.createElement("p", {
+  className: "text-sm md:text-base text-zinc-300 font-normal"
+}, tr(SITE.fleetNarrative, lang))), /*#__PURE__*/React.createElement("a", {
+  href: SITE.meta.github,
+  target: "_blank",
+  rel: "noreferrer",
+  className: "neu-btn-secondary text-xs flex-shrink-0"
+}, /*#__PURE__*/React.createElement(IconGitHub, {
+  size: 14
+}), /*#__PURE__*/React.createElement("span", null, "GitHub @", SITE.meta.handle))));
 const STAT_ICONS = {
   star: IconStar,
   pulse: IconPulse,
@@ -1580,111 +1406,66 @@ const Activity = ({
   lang
 }) => /*#__PURE__*/React.createElement("section", {
   id: "log",
-  className: "section section-log",
-  "data-screen-label": "Activity 数据与动态"
-}, /*#__PURE__*/React.createElement("div", {
-  className: "wrap"
+  className: "py-20 md:py-28 border-t border-white/[0.06]"
 }, /*#__PURE__*/React.createElement(SectionHead, {
   s: SITE.sections.log,
   lang: lang
 }), /*#__PURE__*/React.createElement("div", {
-  className: "stats-grid"
+  className: "grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 mb-10"
 }, SITE.stats.map((stat, i) => {
   const Icon = STAT_ICONS[stat.icon] || IconPulse;
   return /*#__PURE__*/React.createElement("article", {
     key: stat.icon,
-    className: "stat reveal",
+    className: "neu-card p-5 md:p-6 rounded-xl flex flex-col justify-between reveal group",
     style: {
       "--d": `${i * 0.06}s`
     }
   }, /*#__PURE__*/React.createElement("div", {
-    className: "stat-head"
+    className: "flex items-center justify-between text-zinc-400 mb-4"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-white opacity-80 group-hover:opacity-100 transition-opacity"
   }, /*#__PURE__*/React.createElement(Icon, {
-    size: 16
-  }), /*#__PURE__*/React.createElement("span", null, "0", i + 1)), /*#__PURE__*/React.createElement("strong", {
-    className: "stat-num"
+    size: 18
+  })), /*#__PURE__*/React.createElement("span", {
+    className: "text-xs font-mono text-zinc-500"
+  }, "0", i + 1)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("strong", {
+    className: "text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white block mb-1"
   }, stat.value), /*#__PURE__*/React.createElement("span", {
-    className: "stat-label"
-  }, tr(stat.label, lang)));
+    className: "text-xs sm:text-sm font-mono text-zinc-400"
+  }, tr(stat.label, lang))));
 })), /*#__PURE__*/React.createElement("div", {
-  className: "langmix reveal"
+  className: "neu-card p-6 md:p-8 rounded-xl reveal"
 }, /*#__PURE__*/React.createElement("div", {
-  className: "langmix-head"
-}, /*#__PURE__*/React.createElement("span", null, tr(SITE.langMix.title, lang)), /*#__PURE__*/React.createElement("span", null, tr(SITE.langMix.note, lang))), /*#__PURE__*/React.createElement("div", {
-  className: "langbar"
-}, SITE.langMix.items.map(item => /*#__PURE__*/React.createElement("span", {
+  className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6"
+}, /*#__PURE__*/React.createElement("h3", {
+  className: "text-base font-semibold text-white tracking-tight flex items-center gap-2"
+}, /*#__PURE__*/React.createElement("span", {
+  className: "w-2 h-2 rounded-full bg-[#cc8066]"
+}), tr(SITE.langMix.title, lang)), /*#__PURE__*/React.createElement("span", {
+  className: "text-xs font-mono text-zinc-500"
+}, tr(SITE.langMix.note, lang))), /*#__PURE__*/React.createElement("div", {
+  className: "h-2.5 w-full rounded-full overflow-hidden flex bg-white/[0.06] mb-6"
+}, SITE.langMix.items.map(item => /*#__PURE__*/React.createElement("div", {
   key: item.name,
   style: {
     width: `${item.pct}%`,
     background: LANG_COLORS[item.name] || LANG_COLORS.Other
   },
-  title: `${item.name} ${item.pct}%`
+  title: `${item.name} ${item.pct}%`,
+  className: "h-full transition-all"
 }))), /*#__PURE__*/React.createElement("div", {
-  className: "lang-legend"
-}, SITE.langMix.items.map(item => /*#__PURE__*/React.createElement("span", {
+  className: "flex flex-wrap gap-x-6 gap-y-2 text-xs font-mono"
+}, SITE.langMix.items.map(item => /*#__PURE__*/React.createElement("div", {
   key: item.name,
-  className: "legend-item"
+  className: "flex items-center gap-2 text-zinc-300"
 }, /*#__PURE__*/React.createElement("span", {
-  className: "lang-dot",
+  className: "w-2 h-2 rounded-full",
   style: {
     background: LANG_COLORS[item.name] || LANG_COLORS.Other
   }
-}), item.name, /*#__PURE__*/React.createElement("span", {
-  className: "pct"
-}, item.pct, "%")))))));
-const About = ({
-  lang
-}) => {
-  const c = SITE.captain;
-  return /*#__PURE__*/React.createElement("section", {
-    id: "captain",
-    className: "section",
-    "data-screen-label": "About 关于"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "wrap"
-  }, /*#__PURE__*/React.createElement(SectionHead, {
-    s: SITE.sections.captain,
-    lang: lang
-  }), /*#__PURE__*/React.createElement("div", {
-    className: "captain-grid"
-  }, /*#__PURE__*/React.createElement("article", {
-    className: "operator-card reveal",
-    "data-tilt": true
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "operator-profile"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "avatar avatar-large"
-  }, "BC"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("span", {
-    className: "profile-k"
-  }, "PROFILE"), /*#__PURE__*/React.createElement("h3", null, "Bobochang"), /*#__PURE__*/React.createElement(StatusDot, {
-    label: "ACTIVE"
-  }))), /*#__PURE__*/React.createElement("div", {
-    className: "captain-paras"
-  }, c.paras.map((p, i) => /*#__PURE__*/React.createElement("p", {
-    key: i
-  }, tr(p, lang)))), /*#__PURE__*/React.createElement("blockquote", {
-    className: "philosophy"
-  }, /*#__PURE__*/React.createElement("span", null, tr(c.philosophy.quote, lang)), /*#__PURE__*/React.createElement("cite", null, tr(c.philosophy.source, lang))), /*#__PURE__*/React.createElement("div", {
-    className: "location-line"
-  }, /*#__PURE__*/React.createElement(IconPin, {
-    size: 14
-  }), tr(c.location, lang))), /*#__PURE__*/React.createElement("div", {
-    className: "stack-groups reveal",
-    style: {
-      "--d": "0.1s"
-    }
-  }, c.groups.map((group, i) => /*#__PURE__*/React.createElement("section", {
-    key: i,
-    className: "stack-group"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "group-k"
-  }, /*#__PURE__*/React.createElement("span", null, "0", i + 1), tr(group.k, lang)), /*#__PURE__*/React.createElement("div", {
-    className: "chips"
-  }, group.items.map((item, ii) => /*#__PURE__*/React.createElement("span", {
-    key: ii,
-    className: "chip"
-  }, tr(item, lang))))))))));
-};
+}), /*#__PURE__*/React.createElement("span", null, item.name), /*#__PURE__*/React.createElement("span", {
+  className: "text-zinc-500"
+}, item.pct, "%"))))));
 const MOORING_ICONS = {
   github: IconGitHub,
   book: IconBook,
@@ -1696,58 +1477,62 @@ const Links = ({
   lang
 }) => /*#__PURE__*/React.createElement("section", {
   id: "moorings",
-  className: "section section-moorings",
-  "data-screen-label": "Links 链接"
-}, /*#__PURE__*/React.createElement("div", {
-  className: "wrap"
+  className: "py-20 md:py-28 border-t border-white/[0.06]"
 }, /*#__PURE__*/React.createElement(SectionHead, {
   s: SITE.sections.moorings,
   lang: lang
 }), /*#__PURE__*/React.createElement("div", {
-  className: "moorings-grid"
+  className: "grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5"
 }, SITE.moorings.map((mooring, i) => {
   const Icon = MOORING_ICONS[mooring.icon] || IconGlobe;
   return /*#__PURE__*/React.createElement("a", {
     key: mooring.url,
-    className: "mooring-card reveal",
-    style: {
-      "--d": `${i * 0.05}s`
-    },
     href: mooring.url,
     ...(mooring.external === false ? {} : {
       target: "_blank",
       rel: "noreferrer"
-    })
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "mooring-index"
-  }, "0", i + 1), /*#__PURE__*/React.createElement(Icon, {
-    size: 18
-  }), /*#__PURE__*/React.createElement("strong", null, tr(mooring.name, lang)), /*#__PURE__*/React.createElement("span", {
-    className: "mooring-handle"
-  }, mooring.handle), /*#__PURE__*/React.createElement("span", {
-    className: "mooring-note"
-  }, tr(mooring.note, lang)), /*#__PURE__*/React.createElement("span", {
-    className: "mooring-arrow"
+    }),
+    className: "neu-card p-5 md:p-6 rounded-xl group flex flex-col justify-between reveal",
+    style: {
+      "--d": `${i * 0.06}s`
+    }
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center justify-between text-zinc-500 mb-4 text-xs font-mono"
+  }, /*#__PURE__*/React.createElement("span", null, "0", i + 1), /*#__PURE__*/React.createElement("span", {
+    className: "group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-zinc-400 group-hover:text-white"
   }, /*#__PURE__*/React.createElement(IconArrowUpRight, {
-    size: 15
-  })));
-}))));
+    size: 16
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-3 mb-2"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-white opacity-80 group-hover:opacity-100 transition-opacity"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    size: 18
+  })), /*#__PURE__*/React.createElement("strong", {
+    className: "text-base font-semibold text-white tracking-tight group-hover:text-white transition-colors"
+  }, tr(mooring.name, lang))), /*#__PURE__*/React.createElement("div", {
+    className: "text-xs font-mono text-zinc-500 mb-3"
+  }, mooring.handle)), /*#__PURE__*/React.createElement("p", {
+    className: "text-xs text-zinc-400 pt-3 border-t border-white/[0.06]"
+  }, tr(mooring.note, lang)));
+})));
 const Footer = ({
   lang,
   onSurface
 }) => /*#__PURE__*/React.createElement("footer", {
-  className: "footer"
+  className: "py-12 border-t border-white/[0.06] text-xs font-mono text-zinc-500 flex flex-col sm:flex-row items-center justify-between gap-4"
 }, /*#__PURE__*/React.createElement("div", {
-  className: "wrap footer-inner"
-}, /*#__PURE__*/React.createElement("span", null, "© 2026 Bobochang · ", tr(SITE.footer.line, lang)), /*#__PURE__*/React.createElement("span", {
-  className: "footer-signal"
-}, /*#__PURE__*/React.createElement("span", {
-  className: "status-dot"
-}), "SITE ONLINE"), /*#__PURE__*/React.createElement("button", {
+  className: "flex items-center gap-2"
+}, /*#__PURE__*/React.createElement("span", null, "© 2026 Bobochang"), /*#__PURE__*/React.createElement("span", null, "·"), /*#__PURE__*/React.createElement("span", null, tr(SITE.footer.line, lang))), /*#__PURE__*/React.createElement("div", {
+  className: "flex items-center gap-4"
+}, /*#__PURE__*/React.createElement(StatusDot, {
+  label: "SITE ONLINE",
+  color: "bg-emerald-400"
+}), /*#__PURE__*/React.createElement("button", {
   type: "button",
-  className: "surface-link",
-  onClick: onSurface
-}, tr(SITE.footer.surface, lang), /*#__PURE__*/React.createElement(IconArrowUp, {
+  onClick: onSurface,
+  className: "flex items-center gap-1.5 text-zinc-400 hover:text-white transition-colors"
+}, /*#__PURE__*/React.createElement("span", null, tr(SITE.footer.surface, lang)), /*#__PURE__*/React.createElement(IconArrowUp, {
   size: 13
 }))));
 const SwitchControl = ({
@@ -1785,25 +1570,25 @@ const TweaksPanel = ({
     "aria-label": tr(t.title, lang),
     title: tr(t.title, lang)
   }, /*#__PURE__*/React.createElement(IconSliders, {
-    size: 17
+    size: 18
   })), open ? /*#__PURE__*/React.createElement("aside", {
     className: "tweaks-panel",
     "aria-label": tr(t.title, lang)
   }, /*#__PURE__*/React.createElement("div", {
-    className: "tweaks-title"
+    className: "flex items-center justify-between pb-2 border-b border-white/10 font-semibold text-white"
   }, /*#__PURE__*/React.createElement("span", null, tr(t.title, lang)), /*#__PURE__*/React.createElement(StatusDot, {
     label: "LIVE"
   })), /*#__PURE__*/React.createElement("div", {
     className: "tweak-row"
   }, /*#__PURE__*/React.createElement("span", null, tr(t.theme, lang)), /*#__PURE__*/React.createElement("div", {
-    className: "seg"
+    className: "flex items-center p-0.5 border border-white/10 rounded bg-white/[0.04]"
   }, /*#__PURE__*/React.createElement("button", {
     type: "button",
-    className: theme === "night" ? "on" : "",
+    className: `px-2 py-0.5 rounded transition-colors ${theme === "night" ? "bg-white text-black font-semibold" : "text-zinc-400"}`,
     onClick: () => onTheme("night")
   }, tr(t.night, lang)), /*#__PURE__*/React.createElement("button", {
     type: "button",
-    className: theme === "chart" ? "on" : "",
+    className: `px-2 py-0.5 rounded transition-colors ${theme === "chart" ? "bg-white text-black font-semibold" : "text-zinc-400"}`,
     onClick: () => onTheme("chart")
   }, tr(t.chart, lang)))), /*#__PURE__*/React.createElement("div", {
     className: "tweak-row"
@@ -1812,8 +1597,8 @@ const TweaksPanel = ({
   }, tr(t.hue, lang)), /*#__PURE__*/React.createElement("input", {
     id: "signal-hue",
     type: "range",
-    min: "270",
-    max: "335",
+    min: "0",
+    max: "360",
     value: hue,
     onChange: e => onHue(Number(e.target.value))
   })), /*#__PURE__*/React.createElement("div", {
@@ -1830,25 +1615,24 @@ const TweaksPanel = ({
     label: tr(t.motion, lang)
   })), /*#__PURE__*/React.createElement("button", {
     type: "button",
-    className: "tweaks-reset",
+    className: "w-full py-1.5 mt-2 rounded bg-white/10 text-white hover:bg-white/20 transition-colors font-mono text-center",
     onClick: onReset
   }, tr(t.reset, lang))) : null);
 };
 Object.assign(window, {
-  ChartLayer,
+  StatusDot,
+  SectionHead,
   Topbar,
   Hero,
-  SectionHead,
   FeaturedProject,
   Projects,
   ProjectCard,
   Activity,
-  About,
   Links,
   Footer,
   TweaksPanel
 });
-// app.jsx — 应用状态唯一持有者:语言 / 主题 / 微调项 / 滚动入场。
+// app.jsx — 应用状态唯一持有者:语言 / 主题 / 微调项 / 滚动入场 / GSAP 文字动效
 const {
   useState,
   useEffect,
@@ -1864,14 +1648,14 @@ const loadPrefs = () => {
 };
 const DEFAULTS = {
   theme: "night",
-  hue: 292,
+  hue: 24,
   contours: true,
   motion: true
 };
 const App = () => {
   const saved = useRef(loadPrefs()).current;
   const savedHue = Number(saved.hue);
-  const initialHue = Number.isFinite(savedHue) && savedHue >= 270 && savedHue <= 335 ? savedHue : DEFAULTS.hue;
+  const initialHue = Number.isFinite(savedHue) ? savedHue : DEFAULTS.hue;
   const [lang, setLang] = useState(saved.lang || "zh");
   const [theme, setTheme] = useState(saved.theme || DEFAULTS.theme);
   const [hue, setHue] = useState(initialHue);
@@ -1879,7 +1663,7 @@ const App = () => {
   const [motion, setMotion] = useState(saved.motion !== false);
   const [panelOpen, setPanelOpen] = useState(false);
 
-  // 同步到 <html> 属性 + CSS 变量 + localStorage
+  // 同步到 <html> 属性 + CSS 变量 + localStorage + Three.js 实例
   useEffect(() => {
     const html = document.documentElement;
     html.lang = lang;
@@ -1888,6 +1672,11 @@ const App = () => {
     html.dataset.motion = motion ? "on" : "off";
     html.style.setProperty("--accent-h", String(hue));
     document.title = tr(SITE.meta.title, lang);
+    if (window.__trail) {
+      if (typeof window.__trail.setContours === "function") window.__trail.setContours(contours);
+      if (typeof window.__trail.setMotion === "function") window.__trail.setMotion(motion);
+      if (typeof window.__trail.setHue === "function") window.__trail.setHue(hue);
+    }
     try {
       localStorage.setItem(LS_KEY, JSON.stringify({
         lang,
@@ -1898,41 +1687,71 @@ const App = () => {
       }));
     } catch (e) {}
   }, [lang, theme, hue, contours, motion]);
+
+  // GSAP 标题逐字入场动画 (彻底解决字母 g 等降部字符裁剪问题)
   useEffect(() => {
-    const cards = Array.from(document.querySelectorAll("[data-tilt]"));
-    if (!motion || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      cards.forEach(card => {
-        card.style.removeProperty("--tilt-x");
-        card.style.removeProperty("--tilt-y");
+    if (typeof gsap === "undefined") return;
+    try {
+      if (typeof ScrollTrigger !== "undefined") {
+        gsap.registerPlugin(ScrollTrigger);
+      }
+    } catch (e) {}
+    const titleEl = document.getElementById("hero-title");
+    if (!titleEl) return;
+    const lines = titleEl.querySelectorAll(".reveal-line");
+    lines.forEach(line => {
+      const original = line.getAttribute("data-original-text") || line.innerText;
+      line.setAttribute("data-original-text", original);
+      const hasSpaces = original.includes(" ");
+      const words = hasSpaces ? original.split(" ") : original.split("");
+      line.innerHTML = "";
+      words.forEach(word => {
+        const outerSpan = document.createElement("span");
+        outerSpan.style.display = "inline-block";
+        outerSpan.style.overflow = "hidden";
+        outerSpan.style.verticalAlign = "bottom";
+        outerSpan.style.paddingBottom = "0.22em"; // 为字母 g、p、y 尾部降部提供安全视口
+        outerSpan.style.marginBottom = "-0.22em";
+        if (hasSpaces) {
+          outerSpan.style.marginRight = "0.28em";
+        }
+        const innerSpan = document.createElement("span");
+        innerSpan.className = "word-inner";
+        innerSpan.style.display = "inline-block";
+        innerSpan.style.transform = "translateY(115%)";
+        innerSpan.innerText = word;
+        outerSpan.appendChild(innerSpan);
+        line.appendChild(outerSpan);
       });
-      return undefined;
-    }
-    const cleanups = cards.map(card => {
-      const move = event => {
-        const rect = card.getBoundingClientRect();
-        const x = (event.clientX - rect.left) / rect.width - 0.5;
-        const y = (event.clientY - rect.top) / rect.height - 0.5;
-        card.style.setProperty("--tilt-x", `${(-y * 3.5).toFixed(2)}deg`);
-        card.style.setProperty("--tilt-y", `${(x * 4.5).toFixed(2)}deg`);
-      };
-      const leave = () => {
-        card.style.removeProperty("--tilt-x");
-        card.style.removeProperty("--tilt-y");
-      };
-      card.addEventListener("pointermove", move);
-      card.addEventListener("pointerleave", leave);
-      return () => {
-        card.removeEventListener("pointermove", move);
-        card.removeEventListener("pointerleave", leave);
-      };
     });
-    return () => cleanups.forEach(cleanup => cleanup());
+    if (motion && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      gsap.to(".word-inner", {
+        y: "0%",
+        duration: 1.2,
+        ease: "power4.out",
+        stagger: 0.035,
+        delay: 0.1,
+        onComplete: () => {
+          // 入场完成后完全解除容器 overflow:hidden 限制，彻底保证任何字符字形不被裁剪
+          titleEl.querySelectorAll(".reveal-line > span").forEach(s => {
+            s.style.overflow = "visible";
+          });
+        }
+      });
+    } else {
+      titleEl.querySelectorAll(".word-inner").forEach(el => {
+        el.style.transform = "none";
+      });
+      titleEl.querySelectorAll(".reveal-line > span").forEach(s => {
+        s.style.overflow = "visible";
+      });
+    }
   }, [lang, motion]);
 
-  // 滚动入场:进入视口加 .revealed(一次性)
+  // 滚动入场:进入视口加 .revealed
   useEffect(() => {
     const els = Array.from(document.querySelectorAll(".reveal:not(.revealed)"));
-    if (!("IntersectionObserver" in window) || els.length === 0) {
+    if (!("IntersectionObserver" in window) || els.length === 0 || !motion) {
       els.forEach(el => el.classList.add("revealed"));
       return undefined;
     }
@@ -1944,12 +1763,12 @@ const App = () => {
         }
       });
     }, {
-      threshold: 0.1,
-      rootMargin: "0px 0px -6% 0px"
+      threshold: 0.08,
+      rootMargin: "0px 0px -4% 0px"
     });
     els.forEach(el => io.observe(el));
     return () => io.disconnect();
-  }, [lang]);
+  }, [lang, motion]);
   const surface = () => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     window.scrollTo({
@@ -1963,14 +1782,14 @@ const App = () => {
     setContours(DEFAULTS.contours);
     setMotion(DEFAULTS.motion);
   };
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(ChartLayer, null), /*#__PURE__*/React.createElement("div", {
-    className: "page"
+  return /*#__PURE__*/React.createElement("div", {
+    className: "relative z-10 flex flex-col min-h-screen w-full max-w-[1600px] mx-auto p-6 md:p-10 lg:p-12"
   }, /*#__PURE__*/React.createElement(Topbar, {
     lang: lang,
     theme: theme,
     onLang: setLang,
     onTheme: () => setTheme(theme === "night" ? "chart" : "night")
-  }), /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement(Hero, {
+  }), /*#__PURE__*/React.createElement(Hero, {
     lang: lang
   }), /*#__PURE__*/React.createElement(FeaturedProject, {
     lang: lang
@@ -1978,14 +1797,12 @@ const App = () => {
     lang: lang
   }), /*#__PURE__*/React.createElement(Activity, {
     lang: lang
-  }), /*#__PURE__*/React.createElement(About, {
-    lang: lang
   }), /*#__PURE__*/React.createElement(Links, {
     lang: lang
-  })), /*#__PURE__*/React.createElement(Footer, {
+  }), /*#__PURE__*/React.createElement(Footer, {
     lang: lang,
     onSurface: surface
-  })), /*#__PURE__*/React.createElement(TweaksPanel, {
+  }), /*#__PURE__*/React.createElement(TweaksPanel, {
     lang: lang,
     open: panelOpen,
     onToggle: () => setPanelOpen(!panelOpen),

@@ -33,27 +33,50 @@ const SITE = {
     { id: "flagship", zh: "重点项目", en: "Featured" },
     { id: "fleet", zh: "开源项目", en: "Projects" },
     { id: "log", zh: "数据与动态", en: "Activity" },
-    { id: "captain", zh: "关于", en: "About" },
     { id: "moorings", zh: "链接", en: "Links" },
   ],
 
   hero: {
     name: "Bobochang",
-    roles: {
-      zh: "AI Agent 开发者 · 全栈工程师 · 开源维护者",
-      en: "AI Agent Developer · Full Stack Engineer · Open Source Maintainer",
-    },
+    headlineLead: "Think Faster.",
+    headlineSub: "Master Your Mind.",
     tagline: {
       zh: "为 AI Agent 构建可靠的工具、自动化系统与开发者工作流。",
       en: "Reliable tools, automation systems, and developer workflows for AI agents.",
     },
     bio: {
-      zh: "独立项目，共享同一套工程原则：明确边界、本地优先、自动化可验证、默认低风险。",
-      en: "Independent projects, guided by the same engineering principles: explicit boundaries, local-first design, verifiable automation, and low-risk defaults.",
+      zh: "专注于 AI Agent 工具链与本地自动化系统。",
+      en: "Focusing on AI agent toolchains and local-first automation systems.",
     },
-    ctaFleet: { zh: "查看项目", en: "View projects" },
+    featureCards: [
+      {
+        icon: "solar:cpu-linear",
+        title: { zh: "AI Agent 工具链", en: "AI Agent Toolchains" },
+        desc: {
+          zh: "构建可供 Agent 直接调用的标准 CLI 与 MCP 工具，确立明确边界与合规 JSON 输出。",
+          en: "Standardized CLIs and MCP skills built for direct agent usage, with explicit boundaries and structured JSON outputs.",
+        },
+      },
+      {
+        icon: "solar:pulse-linear",
+        title: { zh: "可验证自动化系统", en: "Verifiable Automation" },
+        desc: {
+          zh: "从跨 CLI 会话接力到定时运行与证件审计，把不可靠的人工作业转化为稳定高可用系统。",
+          en: "From cross-CLI session handoff to automated routines and audits, turning friction into reliable systems.",
+        },
+      },
+      {
+        icon: "solar:shield-check-linear",
+        title: { zh: "明确边界 · 本地优先", en: "Local-First & Low Risk" },
+        desc: {
+          zh: "敏感数据与凭据留在本机，默认低风险、合规运行，无需繁重云端依赖与数据上云。",
+          en: "Sensitive data and credentials kept on-device with low-risk defaults and zero unnecessary lock-in.",
+        },
+      },
+    ],
+    ctaFleet: { zh: "查看开源作品", en: "Explore Projects" },
     ctaGithub: "GitHub",
-    vessels: { zh: "7 个开源项目", en: "7 open-source projects" },
+    vessels: { zh: "8 个开源项目", en: "8 open-source projects" },
     routeLabel: { zh: "项目记录 · 2024 — 2026", en: "PROJECT LOG · 2024 — 2026" },
   },
 
@@ -64,9 +87,7 @@ const SITE = {
       sub: { zh: "面向具体问题构建的工具、应用与自动化系统。", en: "Tools, applications, and automation systems built around concrete problems." } },
     log: { no: "03", zh: "数据与动态", en: "Activity",
       sub: { zh: "GitHub 项目与过去一年的公开活动快照。", en: "A snapshot of GitHub projects and public activity from the past year." } },
-    captain: { no: "04", zh: "关于", en: "About",
-      sub: { zh: "我的方向、工程原则与常用工具。", en: "Focus areas, engineering principles, and the tools I use." } },
-    moorings: { no: "05", zh: "链接", en: "Links",
+    moorings: { no: "04", zh: "链接", en: "Links",
       sub: { zh: "项目源码、技术文章与其他公开档案。", en: "Project source, technical writing, and other public profiles." } },
   },
 
@@ -205,49 +226,20 @@ const SITE = {
     ],
   },
 
-  captain: {
-    paras: [
-      {
-        zh: "常驻广州，专注 AI Agent 工具链、CLI、自动化和本地优先应用：让 Agent 直接使用工具，让重复流程能够稳定运行，让敏感数据尽量留在本机。",
-        en: "Based in Guangzhou, I focus on AI-agent toolchains, CLIs, automation, and local-first applications: tools agents can use directly, repeatable workflows that run reliably, and sensitive data kept on-device where practical.",
-      },
-      {
-        zh: "把重复劳动变成可靠系统。",
-        en: "Turn repeated work into reliable systems.",
-      },
-    ],
-    philosophy: {
-      quote: { zh: "GitHub 仓库命名：一个单词、一个意象、一个 emoji。", en: "GitHub repository naming: one word, one image, one emoji." },
-      source: { zh: "仓库命名原则", en: "Repository naming principle" },
-    },
-    groups: [
-      { k: { zh: "语言", en: "Languages" }, items: ["Python", "TypeScript", "Go", "Swift", "JavaScript"] },
-      { k: { zh: "方向", en: "Focus" }, items: [
-        "AI Agents", "MCP",
-        { zh: "CLI 工具", en: "CLI tools" },
-        { zh: "macOS 应用", en: "macOS apps" },
-        "Serverless",
-        { zh: "自动化 & OCR", en: "Automation & OCR" },
-      ] },
-      { k: { zh: "工具栈", en: "Tool stack" }, items: ["Claude Code", "GitHub Actions", "Cloudflare", "SwiftUI", "Playwright", "Wails", "Vite", "Next.js"] },
-    ],
-    location: { zh: "广州 · 中国", en: "Guangzhou · China" },
-  },
-
   moorings: [
     { icon: "github", name: "GitHub", handle: "@can4hou6joeng4",
       url: "https://github.com/can4hou6joeng4",
-      note: { zh: "开源项目与代码", en: "Open-source projects and code" } },
+      note: { zh: "开源项目与代码仓库", en: "Open-source projects and code" } },
     { icon: "book", name: { zh: "掘金专栏", en: "Juejin blog" }, handle: "juejin.cn",
       url: "https://juejin.cn/user/1187904004821262",
-      note: { zh: "中文技术文章", en: "Technical writing in Chinese" } },
-    { icon: "book", name: { zh: "技术文章", en: "Writing" }, handle: "bobochang.cn/writing", url: "/writing/unicode-braille-8-pixel-bitmap-font/", note: { zh: "盲文点阵与误差扩散", en: "Braille bitmaps and error diffusion" }, external: false },
+      note: { zh: "技术博客与文章沉淀", en: "Technical writing and articles" } },
+    { icon: "book", name: { zh: "技术文章", en: "Writing" }, handle: "bobochang.cn/writing",
+      url: "/writing/unicode-braille-8-pixel-bitmap-font/",
+      note: { zh: "盲文点阵与字体渲染实验", en: "Braille bitmaps and font experiments" },
+      external: false },
     { icon: "box", name: { zh: "本站源码", en: "Source code" }, handle: "github.com/can4hou6joeng4/Homeport",
       url: "https://github.com/can4hou6joeng4/Homeport",
       note: { zh: "bobochang.cn 的构建与发布", en: "Build and publishing source for bobochang.cn" } },
-    { icon: "grid", name: "CheckMyGit", handle: "bento",
-      url: "https://checkmygit.com/can4hou6joeng4?template=bento",
-      note: { zh: "交互式档案", en: "Interactive profile" } },
   ],
 
   footer: {

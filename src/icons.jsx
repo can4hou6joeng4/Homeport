@@ -139,6 +139,19 @@ const IconGitHub = ({ size = 16 }) => (
   </svg>
 );
 
+const IconBrain = ({ size = 16 }) => (
+  <LineIcon size={size}>
+    <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04z"></path>
+    <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z"></path>
+  </LineIcon>
+);
+
+const IconShield = ({ size = 16 }) => (
+  <LineIcon size={size}>
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+  </LineIcon>
+);
+
 // 罗盘玫瑰:72 刻度环 + 三重圆环 + 八角星芒。纯线稿,颜色随 currentColor。
 const CompassRose = () => {
   const C = 160;
@@ -231,5 +244,6 @@ const FooterWaves = () => (
 Object.assign(window, {
   IconAnchor, IconArrowUpRight, IconArrowUp, IconArrowRight, IconMoon, IconSun, IconGlobe, IconBook,
   IconGrid, IconPin, IconPulse, IconNetwork, IconTerminal, IconSliders, IconShip, IconBox, IconFlag, IconStar, IconGitHub,
+  IconBrain, IconShield,
   CompassRose, ContourField, FooterWaves,
 });
