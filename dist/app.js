@@ -1,5 +1,5 @@
 // data.jsx — 站点全部内容数据(中英双语)。组件不写死文案，均从此处取。
-// 数据快照日期：2026-09-15,来源：github.com/can4hou6joeng4(见 readme.md)。
+// 数据快照日期：2026-09-21,来源：github.com/can4hou6joeng4(见 readme.md)。
 
 const LANG_COLORS = {
   Swift: "#F05138",
@@ -133,7 +133,7 @@ const SITE = {
     id: "boss-agent-cli",
     emoji: "🤖",
     name: "boss-agent-cli",
-    stars: "1,976",
+    stars: "2,019",
     starsNote: {
       zh: "GitHub 星标",
       en: "GitHub stars"
@@ -198,7 +198,7 @@ const SITE = {
     id: "Beacon",
     emoji: "🗼",
     lang: "TypeScript",
-    stars: 1,
+    stars: 0,
     image: {
       zh: "PDF 到期审计",
       en: "PDF expiry audits"
@@ -230,7 +230,7 @@ const SITE = {
     id: "Semaphore",
     emoji: "🚩",
     lang: "TypeScript",
-    stars: 1,
+    stars: 0,
     image: {
       zh: "浏览器图像转字符",
       en: "Browser image-to-text art"
@@ -246,7 +246,7 @@ const SITE = {
     id: "Trawl",
     emoji: "🎣",
     lang: "Go",
-    stars: 1,
+    stars: 0,
     image: {
       zh: "文书结构化取证",
       en: "Document forensics"
@@ -266,7 +266,7 @@ const SITE = {
     id: "Tide",
     emoji: "🌊",
     lang: "JavaScript",
-    stars: 1,
+    stars: 0,
     image: {
       zh: "掘金自动签到",
       en: "Juejin check-in automation"
@@ -281,7 +281,7 @@ const SITE = {
     id: "Buoy",
     emoji: "🛟",
     lang: "Python",
-    stars: 1,
+    stars: 0,
     image: {
       zh: "AnyRouter 多账号签到",
       en: "AnyRouter multi-account check-in"
@@ -296,7 +296,7 @@ const SITE = {
     id: "Landfall",
     emoji: "🏝️",
     lang: "HTML",
-    stars: 1,
+    stars: 0,
     image: {
       zh: "产品页面设计技能",
       en: "Product page design skill"
@@ -314,14 +314,14 @@ const SITE = {
     en: "These projects address different problems but follow the same principles: explicit boundaries, local-first design, verifiable automation, and low-risk defaults."
   },
   stats: [{
-    value: "1,986",
+    value: "2,020",
     icon: "star",
     label: {
       zh: "累计星标",
       en: "Total stars"
     }
   }, {
-    value: "1,639",
+    value: "1,287",
     icon: "pulse",
     label: {
       zh: "年度贡献",
@@ -335,7 +335,7 @@ const SITE = {
       en: "Open-source projects"
     }
   }, {
-    value: "14",
+    value: "11",
     icon: "box",
     label: {
       zh: "自建仓库",
@@ -352,23 +352,20 @@ const SITE = {
       en: "By code volume across listed project repositories"
     },
     items: [{
-      name: "Swift",
-      pct: 34
-    }, {
       name: "Python",
-      pct: 32
+      pct: 55
     }, {
       name: "TypeScript",
-      pct: 14
+      pct: 18
     }, {
       name: "HTML",
-      pct: 10
+      pct: 16
     }, {
       name: "JavaScript",
       pct: 4
     }, {
       name: "Go",
-      pct: 2
+      pct: 3
     }, {
       name: "Vue",
       pct: 1
