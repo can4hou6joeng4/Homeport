@@ -4,7 +4,7 @@ name: refresh-data
 
 on:
   schedule:
-    - cron: "30 1 * * 1" # 每周一 01:30 UTC = 北京时间 09:30
+    - cron: "30 1 * * 1" # 计划每周一 01:30 UTC = 北京时间 09:30,GitHub 调度可能延迟
   workflow_dispatch: # 也可在 Actions 页面手动触发
 
 permissions:

@@ -35,7 +35,7 @@ npx wrangler deploy  # 部署 Cloudflare Workers + 自定义域名
 
 文章放在 `posts/<slug>.md`(front matter:title / slug / date / lang / description / image / summary_zh / summary_en,图片在 `posts/images/`),`scripts/build-posts.js` 在构建时渲染成 `dist/writing/<slug>/index.html` 纯静态页(设计令牌从主页抽取,主题读同一个 localStorage 键),并生成 `sitemap.xml` 与 `robots.txt`;主页的静态索引和链接区会带上文章链接。
 
-站点数据(星标 / 贡献 / 语言分布)为快照,不在运行时请求 GitHub。由 GitHub Actions 每周一 09:30(北京时间)自动刷新:`scripts/refresh-data.py` 拉取实时数据重写 `src/data.jsx`,**有变化才**构建、部署并提交(workflow:[`refresh-data.yml`](.github/workflows/refresh-data.yml),也可在 Actions 页面手动触发)。
+站点数据(星标 / 贡献 / 语言分布)为快照,不在运行时请求 GitHub。GitHub Actions 计划于每周一 09:30(北京时间,实际调度可能延迟)刷新:`scripts/refresh-data.py` 拉取实时数据重写 `src/data.jsx`,**有变化才**构建、部署并提交(workflow:[`refresh-data.yml`](.github/workflows/refresh-data.yml),也可在 Actions 页面手动触发)。单个项目仓库返回 HTTP 404 时会记录警告并跳过,其他项目继续刷新;认证、限流等其他错误仍会终止任务。
 
 本地手动刷新:
 

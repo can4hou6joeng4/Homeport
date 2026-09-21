@@ -74,8 +74,8 @@ const SITE = {
     },
     ctaGithub: "GitHub",
     vessels: {
-      zh: "9 个开源项目",
-      en: "9 open-source projects"
+      zh: "7 个开源项目",
+      en: "7 open-source projects"
     },
     routeLabel: {
       zh: "项目记录 · 2024 — 2026",
@@ -195,21 +195,6 @@ const SITE = {
     }]
   },
   fleet: [{
-    id: "Harbor",
-    emoji: "⚓",
-    lang: "Swift",
-    stars: 1,
-    image: {
-      zh: "Mac 阅读与收藏",
-      en: "Reading and curation for macOS"
-    },
-    desc: {
-      zh: "本地优先的 macOS 阅读与收藏应用，整合 RSS 与稍后读，数据保留在本机。",
-      en: "A local-first macOS reading and curation app that combines RSS and read-later workflows while keeping data on the device."
-    },
-    tech: ["Swift", "SwiftUI", "SQLite"],
-    github: "https://github.com/can4hou6joeng4/Harbor"
-  }, {
     id: "Beacon",
     emoji: "🗼",
     lang: "TypeScript",
@@ -225,22 +210,6 @@ const SITE = {
     tech: ["Next.js", "Cloudflare Workers", "PaddleOCR"],
     github: "https://github.com/can4hou6joeng4/Beacon",
     site: "https://pdf-audit.bobochang.cn"
-  }, {
-    id: "Atlas",
-    emoji: "🗺️",
-    lang: "Swift",
-    stars: 2,
-    image: {
-      zh: "AI 编程用量",
-      en: "AI coding usage"
-    },
-    desc: {
-      zh: "在 macOS 菜单栏汇总本地 AI 编程用量，包括 token、成本、会话与 Git 活动。",
-      en: "A macOS menu bar app for tracking local AI coding usage, including tokens, cost, sessions, and Git activity."
-    },
-    tech: ["Swift", "SwiftUI", "Sparkle"],
-    github: "https://github.com/can4hou6joeng4/Atlas",
-    site: "https://can4hou6joeng4.github.io/Atlas/"
   }, {
     id: "Watch",
     emoji: "⏱️",
@@ -359,7 +328,7 @@ const SITE = {
       en: "Contributions / yr"
     }
   }, {
-    value: "10",
+    value: "8",
     icon: "grid",
     label: {
       zh: "开源项目",

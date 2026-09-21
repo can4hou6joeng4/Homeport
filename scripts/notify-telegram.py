@@ -87,7 +87,8 @@ def build_failure():
     step = os.environ.get("FAILED_STEP", "").strip()
     parts = ["⚠️ <b>主页 · 数据刷新失败</b>", ""]
     parts.append(f"失败于「{esc(step)}」" if step else "任务未能跑完。")
-    parts.append("线上站点未受影响,下周一 09:30 会自动重试。")
+    parts.append("线上站点未受影响。")
+    parts.append("计划于下周一 09:30 再次运行（GitHub 调度可能延迟）。")
     if os.environ.get("RUN_URL"):
         parts += ["", f'🔧 <a href="{esc(os.environ["RUN_URL"])}">查看运行日志</a>']
     return "\n".join(parts)

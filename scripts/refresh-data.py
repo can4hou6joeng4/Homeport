@@ -6,23 +6,44 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 OWNER = "can4hou6joeng4"
-PROJECTS = ["boss-agent-cli", "Harbor", "Beacon", "Atlas", "Watch", "Semaphore",
-            "Trawl", "Tide", "Buoy", "Landfall"]
+FLAGSHIP = "boss-agent-cli"
+PROJECTS = [FLAGSHIP, "Beacon", "Watch", "Semaphore", "Trawl", "Tide", "Buoy", "Landfall"]
 LANG_BUCKETS = ["Swift", "Python", "TypeScript", "JavaScript", "Go", "HTML", "Vue"]
 
-def gh(*args, inp=None):
+def gh(*args, inp=None, allow_not_found=False):
     r = subprocess.run(["gh"] + list(args), capture_output=True, text=True, input=inp)
     if r.returncode != 0:
-        sys.exit(f"gh {' '.join(args[:2])} failed: {r.stderr.strip()[:300]}")
+        detail = r.stderr.strip()
+        if allow_not_found and "HTTP 404" in detail:
+            return None
+        sys.exit(f"gh {' '.join(args[:2])} failed: {detail[:300]}")
     return r.stdout
 
-stars, lang_bytes = {}, {}
+def warn(message):
+    prefix = "::warning::" if os.environ.get("GITHUB_ACTIONS") == "true" else "warning: "
+    print(f"{prefix}{message}", file=sys.stderr)
+
+stars, lang_bytes, available_projects, skipped_projects = {}, {}, [], []
 for repo in PROJECTS:
-    d = json.loads(gh("api", f"repos/{OWNER}/{repo}"))
+    raw = gh("api", f"repos/{OWNER}/{repo}", allow_not_found=True)
+    if raw is None:
+        skipped_projects.append(repo)
+        warn(f"跳过 {OWNER}/{repo}:仓库不存在或当前令牌不可访问(HTTP 404)")
+        continue
+    d = json.loads(raw)
     stars[repo] = d["stargazers_count"]
-    langs = json.loads(gh("api", f"repos/{OWNER}/{repo}/languages"))
+    available_projects.append(repo)
+    raw_langs = gh("api", f"repos/{OWNER}/{repo}/languages", allow_not_found=True)
+    if raw_langs is None:
+        warn(f"跳过 {OWNER}/{repo} 的语言统计:接口返回 HTTP 404")
+        langs = {}
+    else:
+        langs = json.loads(raw_langs)
     for k, v in langs.items():
         lang_bytes[k if k in LANG_BUCKETS else "Other"] = lang_bytes.get(k if k in LANG_BUCKETS else "Other", 0) + v
+
+if FLAGSHIP not in stars:
+    sys.exit(f"重点项目 {OWNER}/{FLAGSHIP} 不可用,无法生成主页快照")
 
 total_stars = sum(stars.values())
 # 仓库数只算自建，排除 fork(与站点「自建仓库」口径一致)
@@ -49,8 +70,8 @@ today = datetime.date.today().isoformat()
 data = (ROOT / "src/data.jsx").read_text()
 orig = data
 data = re.sub(r"数据快照日期：\d{4}-\d{2}-\d{2}", f"数据快照日期：{today}", data)
-data = re.sub(r'(stars: ")[^"]*(",)', rf"\g<1>{fmt(stars['boss-agent-cli'])}\g<2>", data, count=1)
-for repo in PROJECTS:
+data = re.sub(r'(stars: ")[^"]*(",)', rf"\g<1>{fmt(stars[FLAGSHIP])}\g<2>", data, count=1)
+for repo in available_projects:
     data = re.sub(rf'(id: "{repo}", emoji: [^\n]*stars: )\d+', rf"\g<1>{stars[repo]}", data)
 data = re.sub(r'value: "[^"]*", icon: "star"', f'value: "{fmt(total_stars)}", icon: "star"', data)
 data = re.sub(r'value: "[^"]*", icon: "pulse"', f'value: "{fmt(contributions)}", icon: "pulse"', data)
@@ -61,13 +82,15 @@ data = re.sub(r"(langMix: \{[\s\S]*?items: \[\n)[\s\S]*?(    \],)", rf"\g<1>{ite
 
 comp_path = ROOT / "src/components.jsx"
 comp = comp_path.read_text()
-comp_new = re.sub(r"★ [\d.,]+k?", f"★ {short(stars['boss-agent-cli'])}", comp)
+comp_new = re.sub(r"★ [\d.,]+k?", f"★ {short(stars[FLAGSHIP])}", comp)
 comp_path.write_text(comp_new)
 
 changed = data != orig or comp_new != comp
 print(f"stars={fmt(total_stars)} contrib={fmt(contributions)} repos={own_repos} "
-      f"flagship={fmt(stars['boss-agent-cli'])} langs={items}")
+      f"flagship={fmt(stars[FLAGSHIP])} langs={items}")
 print("CHANGED" if changed else "UNCHANGED")
+if skipped_projects:
+    print(f"SKIPPED repos={','.join(skipped_projects)}")
 
 # 设了 REFRESH_SUMMARY_JSON 才写结构化摘要(含刷新前的旧值,供通知算增减)。
 # 未设时行为与从前完全一致,手动跑不受影响。
@@ -81,10 +104,11 @@ if summary_path:
         "date": today,
         "stats": [
             {"key": "stars_total",   "old": was(r'value: "([^"]*)", icon: "star"'),  "new": fmt(total_stars)},
-            {"key": "flagship",      "old": was(r'stars: "([^"]*)",'),               "new": fmt(stars["boss-agent-cli"])},
+            {"key": "flagship",      "old": was(r'stars: "([^"]*)",'),               "new": fmt(stars[FLAGSHIP])},
             {"key": "contributions", "old": was(r'value: "([^"]*)", icon: "pulse"'), "new": fmt(contributions)},
             {"key": "repos",         "old": was(r'value: "([^"]*)", icon: "box"'),   "new": str(own_repos)},
         ],
         "langs": [{"name": k, "pct": v} for k, v in items],
+        "skipped_repos": skipped_projects,
     }
     Path(summary_path).write_text(json.dumps(summary, ensure_ascii=False, indent=2))
