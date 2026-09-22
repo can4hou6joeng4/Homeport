@@ -2,13 +2,13 @@
 
 `Homeport` 是 `bobochang.cn` 的源码仓库与发布入口。
 
-[bobochang.cn](https://bobochang.cn) 是 Bobochang 的个人主页，直接展示 AI Agent 工具链、CLI、自动化、本地优先应用和开源项目。界面采用黑色神经场、紫色信号、玻璃控制台和多层系统面板，支持中英双语、暗色 / 亮色主题及交互微调。
+[bobochang.cn](https://bobochang.cn) 是 Bobochang 的个人主页，直接展示 AI Agent 工具链、CLI、自动化、本地优先应用和开源项目。界面采用基于 Neuform 的极简科技设计系统，搭配 Three.js 3D WebGL 光轨与后处理光效、暖铜信号与毛玻璃卡片，支持中英双语、暗色 / 亮色主题及交互微调。
 
 ## 结构
 
 ```
-src/         源码(设计系统 CSS 在 Personal Homepage.html;Canvas 神经场与数据 / 图标 / 组件 / 应用分层 JSX)
-fonts/       自托管字体(Space Grotesk + IBM Plex Mono,woff2)
+src/         源码(设计系统 CSS 在 Personal Homepage.html;Three.js 3D 光轨与数据 / 图标 / 组件 / 应用分层 JSX)
+fonts/       自托管字体(IBM Plex Mono,woff2)与 Inter 现代字体体系
 vendor/      自托管 React 18 生产版 UMD
 dist/        构建产物(部署到 Cloudflare 的即为此目录)
 build.sh     构建脚本:拼接 JSX → Babel 预编译 → 组装 dist/
