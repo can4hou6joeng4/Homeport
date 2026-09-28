@@ -1,5 +1,5 @@
 // data.jsx — 站点全部内容数据(中英双语)。组件不写死文案，均从此处取。
-// 数据快照日期：2026-09-21,来源：github.com/can4hou6joeng4(见 readme.md)。
+// 数据快照日期：2026-09-28,来源：github.com/can4hou6joeng4(见 readme.md)。
 
 const LANG_COLORS = {
   Swift: "#F05138",
@@ -95,7 +95,7 @@ const SITE = {
     id: "boss-agent-cli",
     emoji: "🤖",
     name: "boss-agent-cli",
-    stars: "2,019",
+    stars: "2,035",
     starsNote: { zh: "GitHub 星标", en: "GitHub stars" },
     desc: {
       zh: "为 AI agent 打造的 BOSS 直聘本地辅助 CLI —— 搜索、福利筛选、意向清单、JSON 信封输出；默认低风险、合规运行。",
@@ -145,7 +145,7 @@ const SITE = {
       site: "https://relay.bobochang.cn",
     },
     {
-      id: "Semaphore", emoji: "🚩", lang: "TypeScript", stars: 0,
+      id: "Semaphore", emoji: "🚩", lang: "TypeScript", stars: 1,
       image: { zh: "浏览器图像转字符", en: "Browser image-to-text art" },
       desc: {
         zh: "在浏览器本地将图片转换为字符画，无需上传或账号，支持盲文与 CRT 风格。",
@@ -168,7 +168,7 @@ const SITE = {
       siteLabel: { zh: "下载", en: "Download" },
     },
     {
-      id: "Tide", emoji: "🌊", lang: "JavaScript", stars: 0,
+      id: "Tide", emoji: "🌊", lang: "JavaScript", stars: 1,
       image: { zh: "掘金自动签到", en: "Juejin check-in automation" },
       desc: {
         zh: "自动完成掘金每日签到与免费抽奖，并通过 Telegram 推送执行结果。",
@@ -178,7 +178,7 @@ const SITE = {
       github: "https://github.com/can4hou6joeng4/Tide",
     },
     {
-      id: "Buoy", emoji: "🛟", lang: "Python", stars: 0,
+      id: "Buoy", emoji: "🛟", lang: "Python", stars: 2,
       image: { zh: "AnyRouter 多账号签到", en: "AnyRouter multi-account check-in" },
       desc: {
         zh: "AnyRouter 多账号自动签到工具，支持多平台通知与隐私脱敏。",
@@ -206,8 +206,8 @@ const SITE = {
   },
 
   stats: [
-    { value: "2,020", icon: "star", label: { zh: "累计星标", en: "Total stars" } },
-    { value: "1,287", icon: "pulse", label: { zh: "年度贡献", en: "Contributions / yr" } },
+    { value: "2,040", icon: "star", label: { zh: "累计星标", en: "Total stars" } },
+    { value: "1,305", icon: "pulse", label: { zh: "年度贡献", en: "Contributions / yr" } },
     { value: "8", icon: "grid", label: { zh: "开源项目", en: "Open-source projects" } },
     { value: "11", icon: "box", label: { zh: "自建仓库", en: "Own repos" } },
   ],
@@ -216,8 +216,8 @@ const SITE = {
     title: { zh: "技术语言分布", en: "Language mix" },
     note: { zh: "按所列项目仓库代码量统计", en: "By code volume across listed project repositories" },
     items: [
-      { name: "Python", pct: 55 },
-      { name: "TypeScript", pct: 18 },
+      { name: "Python", pct: 54 },
+      { name: "TypeScript", pct: 19 },
       { name: "HTML", pct: 16 },
       { name: "JavaScript", pct: 4 },
       { name: "Go", pct: 3 },

@@ -1,5 +1,5 @@
 // data.jsx — 站点全部内容数据(中英双语)。组件不写死文案，均从此处取。
-// 数据快照日期：2026-09-21,来源：github.com/can4hou6joeng4(见 readme.md)。
+// 数据快照日期：2026-09-28,来源：github.com/can4hou6joeng4(见 readme.md)。
 
 const LANG_COLORS = {
   Swift: "#F05138",
@@ -149,7 +149,7 @@ const SITE = {
     id: "boss-agent-cli",
     emoji: "🤖",
     name: "boss-agent-cli",
-    stars: "2,019",
+    stars: "2,035",
     starsNote: {
       zh: "GitHub 星标",
       en: "GitHub stars"
@@ -246,7 +246,7 @@ const SITE = {
     id: "Semaphore",
     emoji: "🚩",
     lang: "TypeScript",
-    stars: 0,
+    stars: 1,
     image: {
       zh: "浏览器图像转字符",
       en: "Browser image-to-text art"
@@ -282,7 +282,7 @@ const SITE = {
     id: "Tide",
     emoji: "🌊",
     lang: "JavaScript",
-    stars: 0,
+    stars: 1,
     image: {
       zh: "掘金自动签到",
       en: "Juejin check-in automation"
@@ -297,7 +297,7 @@ const SITE = {
     id: "Buoy",
     emoji: "🛟",
     lang: "Python",
-    stars: 0,
+    stars: 2,
     image: {
       zh: "AnyRouter 多账号签到",
       en: "AnyRouter multi-account check-in"
@@ -330,14 +330,14 @@ const SITE = {
     en: "These projects address different problems but follow the same principles: explicit boundaries, local-first design, verifiable automation, and low-risk defaults."
   },
   stats: [{
-    value: "2,020",
+    value: "2,040",
     icon: "star",
     label: {
       zh: "累计星标",
       en: "Total stars"
     }
   }, {
-    value: "1,287",
+    value: "1,305",
     icon: "pulse",
     label: {
       zh: "年度贡献",
@@ -369,10 +369,10 @@ const SITE = {
     },
     items: [{
       name: "Python",
-      pct: 55
+      pct: 54
     }, {
       name: "TypeScript",
-      pct: 18
+      pct: 19
     }, {
       name: "HTML",
       pct: 16
