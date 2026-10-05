@@ -1,5 +1,5 @@
 // data.jsx — 站点全部内容数据(中英双语)。组件不写死文案，均从此处取。
-// 数据快照日期：2026-09-28,来源：github.com/can4hou6joeng4(见 readme.md)。
+// 数据快照日期：2026-10-05,来源：github.com/can4hou6joeng4(见 readme.md)。
 
 const LANG_COLORS = {
   Swift: "#F05138",
@@ -95,7 +95,7 @@ const SITE = {
     id: "boss-agent-cli",
     emoji: "🤖",
     name: "boss-agent-cli",
-    stars: "2,035",
+    stars: "2,042",
     starsNote: { zh: "GitHub 星标", en: "GitHub stars" },
     desc: {
       zh: "为 AI agent 打造的 BOSS 直聘本地辅助 CLI —— 搜索、福利筛选、意向清单、JSON 信封输出；默认低风险、合规运行。",
@@ -206,8 +206,8 @@ const SITE = {
   },
 
   stats: [
-    { value: "2,040", icon: "star", label: { zh: "累计星标", en: "Total stars" } },
-    { value: "1,305", icon: "pulse", label: { zh: "年度贡献", en: "Contributions / yr" } },
+    { value: "2,047", icon: "star", label: { zh: "累计星标", en: "Total stars" } },
+    { value: "1,314", icon: "pulse", label: { zh: "年度贡献", en: "Contributions / yr" } },
     { value: "8", icon: "grid", label: { zh: "开源项目", en: "Open-source projects" } },
     { value: "11", icon: "box", label: { zh: "自建仓库", en: "Own repos" } },
   ],
