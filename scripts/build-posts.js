@@ -35,16 +35,30 @@ function tokens() {
   return pick(":root {") + pick('[data-theme="chart"] {');
 }
 
-function page(meta, bodyHtml, firstImage) {
+function localeOf(lang) {
+  if (lang === "zh") return { html: "zh-CN", og: "zh_CN", hreflang: "zh-CN" };
+  if (lang === "en") return { html: "en", og: "en_US", hreflang: "en" };
+  throw new Error("unsupported post lang: " + lang);
+}
+
+function page(meta, bodyHtml, cluster) {
   const url = `${ORIGIN}/writing/${meta.slug}/`;
   const image = `${url}${meta.image}`;
+  const locale = localeOf(meta.lang);
+  const ui = meta.lang === "zh"
+    ? { kicker: "文章 · 技术笔记", projects: "项目", source: "文中引擎的源码", home: "首页" }
+    : { kicker: "WRITING · TECHNICAL NOTE", projects: "projects", source: "source of the engine discussed", home: "home" };
+  const other = cluster.find((item) => item.slug !== meta.slug);
+  const alternates = cluster.map((item) => `<link rel="alternate" hreflang="${localeOf(item.lang).hreflang}" href="${ORIGIN}/writing/${item.slug}/">`);
+  const english = cluster.find((item) => item.lang === "en");
+  if (english) alternates.push(`<link rel="alternate" hreflang="x-default" href="${ORIGIN}/writing/${english.slug}/">`);
   const ld = {
     "@context": "https://schema.org",
     "@type": "TechArticle",
     "@id": url + "#article",
     headline: meta.title,
     description: meta.description,
-    inLanguage: meta.lang,
+    inLanguage: locale.html,
     datePublished: meta.date,
     dateModified: meta.date,
     image: image,
@@ -61,20 +75,21 @@ function page(meta, bodyHtml, firstImage) {
     mentions: [{ "@type": "WebApplication", "@id": "https://semaphore.bobochang.cn/#webapp", name: "Semaphore", url: "https://semaphore.bobochang.cn/" }],
   };
   return `<!DOCTYPE html>
-<html lang="${esc(meta.lang)}" data-theme="night">
+<html lang="${locale.html}" data-theme="night">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${esc(meta.title)} · Bobochang</title>
 <meta name="description" content="${esc(meta.description)}">
 <link rel="canonical" href="${url}">
+${alternates.join("\n")}
 <meta property="og:type" content="article">
 <meta property="og:url" content="${url}">
 <meta property="og:title" content="${esc(meta.title)}">
 <meta property="og:description" content="${esc(meta.description)}">
 <meta property="og:image" content="${image}">
 <meta property="og:site_name" content="Bobochang">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="${locale.og}">${other ? `\n<meta property="og:locale:alternate" content="${localeOf(other.lang).og}">` : ""}
 <meta property="article:published_time" content="${meta.date}T00:00:00Z">
 <meta property="article:author" content="${ORIGIN}/">
 <meta name="twitter:card" content="summary_large_image">
@@ -128,17 +143,17 @@ footer.foot a:hover { color: var(--accent); }
 <div class="wrap">
   <nav class="top" aria-label="site">
     <a class="wordmark" href="/">◈ BOBOCHANG</a>
-    <a href="/#fleet">projects</a>
+    <span>${other ? `<a href="${ORIGIN}/writing/${other.slug}/" hreflang="${localeOf(other.lang).hreflang}">${other.lang === "zh" ? "中文" : "English"}</a> · ` : ""}<a href="/#fleet">${ui.projects}</a></span>
   </nav>
-  <div class="kicker">WRITING · TECHNICAL NOTE</div>
+  <div class="kicker">${ui.kicker}</div>
   <h1>${esc(meta.title)}</h1>
-  <p class="byline"><a href="${ORIGIN}/">bobochang</a> · <time datetime="${meta.date}">${meta.date}</time> · <a href="https://github.com/can4hou6joeng4/Semaphore">source of the engine discussed</a></p>
+  <p class="byline"><a href="${ORIGIN}/">bobochang</a> · <time datetime="${meta.date}">${meta.date}</time> · <a href="https://github.com/can4hou6joeng4/Semaphore">${ui.source}</a></p>
   <article>
 ${bodyHtml}
   </article>
   <footer class="foot">
     <span>© 2026 Bobochang</span>
-    <a href="/">home</a>
+    <a href="/">${ui.home}</a>
     <a href="https://semaphore.bobochang.cn/">Semaphore</a>
     <a href="https://github.com/can4hou6joeng4">GitHub</a>
   </footer>
@@ -148,18 +163,33 @@ ${bodyHtml}
 `;
 }
 
-const posts = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith(".md")).map((f) => {
+const parsed = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith(".md")).map((f) => {
   const { meta, body } = frontMatter(fs.readFileSync(path.join(POSTS_DIR, f), "utf8"));
   for (const k of ["title", "slug", "date", "lang", "description", "image"]) if (!meta[k]) throw new Error(f + " missing " + k);
+  localeOf(meta.lang);
+  return { file: f, meta, body };
+});
+const bySlug = new Map(parsed.map((post) => [post.meta.slug, post]));
+if (bySlug.size !== parsed.length) throw new Error("duplicate post slug");
+for (const post of parsed) {
+  const other = post.meta.alternate;
+  if (!other) continue;
+  const target = bySlug.get(other);
+  if (!target) throw new Error(post.file + " alternate not found: " + other);
+  if (target.meta.alternate !== post.meta.slug) throw new Error(post.file + " alternate is not reciprocal");
+  if (target.meta.lang === post.meta.lang) throw new Error(post.file + " alternate uses the same lang");
+}
+const posts = parsed.map(({ file, meta, body }) => {
+  const cluster = [meta].concat(meta.alternate ? [bySlug.get(meta.alternate).meta] : []);
   const dir = path.join(OUT_DIR, meta.slug);
   fs.rmSync(dir, { recursive: true, force: true });
   fs.mkdirSync(path.join(dir, "images"), { recursive: true });
   const html = marked.parse(body, { gfm: true });
-  fs.writeFileSync(path.join(dir, "index.html"), page(meta, html));
+  fs.writeFileSync(path.join(dir, "index.html"), page(meta, html, cluster));
   const imgs = [...body.matchAll(/\]\((images\/[^)]+)\)/g)].map((m) => m[1]);
   for (const rel of new Set(imgs.concat([meta.image]))) {
     const from = path.join(POSTS_DIR, rel);
-    if (!fs.existsSync(from)) throw new Error(f + " references missing " + rel);
+    if (!fs.existsSync(from)) throw new Error(file + " references missing " + rel);
     fs.copyFileSync(from, path.join(dir, rel));
   }
   return { ...meta, url: `${ORIGIN}/writing/${meta.slug}/` };
