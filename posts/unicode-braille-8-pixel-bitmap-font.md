@@ -3,6 +3,7 @@ title: Unicode braille is an 8-pixel bitmap font
 slug: unicode-braille-8-pixel-bitmap-font
 date: 2026-09-14
 lang: en
+alternate: unicode-braille-dot-bitmap
 description: Each braille character is a 2×4 dot bitmap. Threshold it and you get hard edges; run Floyd–Steinberg error diffusion over the dot grid first and a photo survives as plain text. How the pipeline in a browser image-to-ASCII converter works, with the real code and before/after figures.
 image: images/braille-2-threshold-vs-dither.webp
 summary_zh: 盲文字符其实是 2×4 的点阵位图。在点阵网格上先做 Floyd–Steinberg 误差扩散再打包，照片就能以纯文本形式存活。附引擎源码与前后对比图。
