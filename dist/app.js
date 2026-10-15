@@ -241,7 +241,14 @@ const SITE = {
     },
     tech: ["TypeScript", "Tauri", "node:sqlite"],
     github: "https://github.com/can4hou6joeng4/Watch",
-    site: "https://relay.bobochang.cn"
+    site: "https://relay.bobochang.cn",
+    reading: {
+      url: "https://relay.bobochang.cn/guides/opus-5-5-five-hour-limit/",
+      label: {
+        zh: "Opus 5.5 与 5 小时限额",
+        en: "Opus 5.5 and the five-hour limit"
+      }
+    }
   }, {
     id: "Semaphore",
     emoji: "🚩",
@@ -418,7 +425,7 @@ const SITE = {
       en: "Writing"
     },
     handle: "bobochang.cn/writing",
-    url: "/writing/unicode-braille-8-pixel-bitmap-font/",
+    url: "/writing/unicode-braille-dot-bitmap/",
     note: {
       zh: "盲文点阵与字体渲染实验",
       en: "Braille bitmaps and font experiments"
@@ -1327,8 +1334,13 @@ const ProjectCard = ({
 }, s.id), /*#__PURE__*/React.createElement("div", {
   className: "text-xs font-mono text-zinc-400"
 }, tr(s.image, lang)))), /*#__PURE__*/React.createElement("p", {
-  className: "text-zinc-300 text-sm leading-relaxed mb-6 font-normal"
-}, tr(s.desc, lang))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+  className: `text-zinc-300 text-sm leading-relaxed font-normal ${s.reading ? "mb-3" : "mb-6"}`
+}, tr(s.desc, lang)), s.reading ? /*#__PURE__*/React.createElement("a", {
+  href: s.reading.url,
+  className: "inline-flex items-center gap-1 mb-6 text-sm text-[#cc8066] hover:text-white transition-colors"
+}, tr(s.reading.label, lang), /*#__PURE__*/React.createElement(IconArrowUpRight, {
+  size: 14
+})) : null), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
   className: "flex flex-wrap gap-1.5 mb-5"
 }, s.tech.map(tech => /*#__PURE__*/React.createElement("span", {
   key: tech,

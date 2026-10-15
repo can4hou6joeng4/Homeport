@@ -143,6 +143,13 @@ const SITE = {
       tech: ["TypeScript", "Tauri", "node:sqlite"],
       github: "https://github.com/can4hou6joeng4/Watch",
       site: "https://relay.bobochang.cn",
+      reading: {
+        url: "https://relay.bobochang.cn/guides/opus-5-5-five-hour-limit/",
+        label: {
+          zh: "Opus 5.5 与 5 小时限额",
+          en: "Opus 5.5 and the five-hour limit",
+        },
+      },
     },
     {
       id: "Semaphore", emoji: "🚩", lang: "TypeScript", stars: 1,
@@ -234,7 +241,7 @@ const SITE = {
       url: "https://juejin.cn/user/1187904004821262",
       note: { zh: "技术博客与文章沉淀", en: "Technical writing and articles" } },
     { icon: "book", name: { zh: "技术文章", en: "Writing" }, handle: "bobochang.cn/writing",
-      url: "/writing/unicode-braille-8-pixel-bitmap-font/",
+      url: "/writing/unicode-braille-dot-bitmap/",
       note: { zh: "盲文点阵与字体渲染实验", en: "Braille bitmaps and font experiments" },
       external: false },
     { icon: "box", name: { zh: "本站源码", en: "Source code" }, handle: "github.com/can4hou6joeng4/Homeport",

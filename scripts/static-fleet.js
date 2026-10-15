@@ -16,8 +16,11 @@ vm.runInContext(fs.readFileSync(path.join(root, "src/data.jsx"), "utf8"), sandbo
 const SITE = sandbox.window.SITE;
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-const item = ({ name, primary, image, zh, en, extra }) => {
-  const tail = extra ? ` · <a href="${esc(extra.url)}">${esc(extra.label)}</a>` : "";
+const item = ({ name, primary, image, zh, en, extra, reading }) => {
+  const tail = [
+    extra ? ` · <a href="${esc(extra.url)}">${esc(extra.label)}</a>` : "",
+    reading ? ` · <a href="${esc(reading.url)}">${esc(reading.label)}</a>` : "",
+  ].join("");
   return `    <li><a href="${esc(primary)}">${esc(name)}</a> · ${esc(image)} — ${esc(zh)} <span lang="en">${esc(en)}</span>${tail}</li>`;
 };
 
@@ -30,6 +33,7 @@ const lines = [
   ...SITE.fleet.map((s) => item({
     name: s.id, primary: s.site || s.github, image: s.image.zh, zh: s.desc.zh, en: s.desc.en,
     extra: s.site ? { url: s.github, label: "GitHub" } : null,
+    reading: s.reading ? { url: s.reading.url, label: s.reading.label.zh } : null,
   })),
 ];
 

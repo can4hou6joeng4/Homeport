@@ -13,6 +13,8 @@ vendor/      自托管 React 18 生产版 UMD
 dist/        构建产物(部署到 Cloudflare 的即为此目录)
 build.sh     构建脚本:拼接 JSX → Babel 预编译 → 组装 dist/
 wrangler.jsonc  Cloudflare Workers 静态资产配置(绑定 bobochang.cn / www)
+worker.js       www.bobochang.cn 整站 301 到 https://bobochang.cn,路径与查询保留
+src/404.html    未知路径的 404 页面;不会回退为首页 HTTP 200
 ```
 
 ## 开发

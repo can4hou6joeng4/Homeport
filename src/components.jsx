@@ -316,9 +316,15 @@ const ProjectCard = ({ s, i, lang }) => (
         </div>
       </div>
 
-      <p className="text-zinc-300 text-sm leading-relaxed mb-6 font-normal">
+      <p className={`text-zinc-300 text-sm leading-relaxed font-normal ${s.reading ? "mb-3" : "mb-6"}`}>
         {tr(s.desc, lang)}
       </p>
+      {s.reading ? (
+        <a href={s.reading.url} className="inline-flex items-center gap-1 mb-6 text-sm text-[#cc8066] hover:text-white transition-colors">
+          {tr(s.reading.label, lang)}
+          <IconArrowUpRight size={14} />
+        </a>
+      ) : null}
     </div>
 
     <div>
