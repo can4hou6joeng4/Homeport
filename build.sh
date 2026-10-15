@@ -58,9 +58,14 @@ fleet = subprocess.run(["node", "scripts/static-fleet.js"], check=True, capture_
 assert html.count('<div id="root"></div>') == 1, "root mount point not found"
 html = html.replace('<div id="root"></div>', fleet + '<div id="root"></div>')
 assert 'href="https://semaphore.bobochang.cn"' in html, "static project index missing"
+assert 'href="https://relay.bobochang.cn/guides/opus-5-5-five-hour-limit/"' in html, "relay guide link missing"
+assert 'href="https://bobochang.cn/writing/unicode-braille-8-pixel-bitmap-font/"' in html, "writing article link missing"
+assert 'href="https://bobochang.cn/writing/unicode-braille-dot-bitmap/"' in html, "Chinese writing article link missing"
 
 open("dist/index.html", "w").write(html)
 print("dist/index.html written,", len(html), "bytes")
 EOF
+
+cp src/404.html dist/404.html
 
 echo "build OK"
