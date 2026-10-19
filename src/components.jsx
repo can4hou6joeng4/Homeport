@@ -169,7 +169,7 @@ const Hero = ({ lang }) => {
             >
               <IconGitHub size={16} />
               <span>GitHub @{SITE.meta.handle}</span>
-              <span className="text-xs px-2 py-0.5 rounded bg-white/10 font-mono text-[#cc8066]">★ 2.0k</span>
+              <span className="text-xs px-2 py-0.5 rounded bg-white/10 font-mono text-[#cc8066]">★ 2.1k</span>
             </a>
           </div>
         </div>
