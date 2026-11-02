@@ -1,5 +1,5 @@
 // data.jsx — 站点全部内容数据(中英双语)。组件不写死文案，均从此处取。
-// 数据快照日期：2026-10-26,来源：github.com/can4hou6joeng4(见 readme.md)。
+// 数据快照日期：2026-11-02,来源：github.com/can4hou6joeng4(见 readme.md)。
 
 const LANG_COLORS = {
   Swift: "#F05138",
@@ -149,7 +149,7 @@ const SITE = {
     id: "boss-agent-cli",
     emoji: "🤖",
     name: "boss-agent-cli",
-    stars: "2,144",
+    stars: "2,173",
     starsNote: {
       zh: "GitHub 星标",
       en: "GitHub stars"
@@ -337,14 +337,14 @@ const SITE = {
     en: "These projects address different problems but follow the same principles: explicit boundaries, local-first design, verifiable automation, and low-risk defaults."
   },
   stats: [{
-    value: "2,152",
+    value: "2,181",
     icon: "star",
     label: {
       zh: "累计星标",
       en: "Total stars"
     }
   }, {
-    value: "1,645",
+    value: "2,059",
     icon: "pulse",
     label: {
       zh: "年度贡献",
@@ -358,7 +358,7 @@ const SITE = {
       en: "Open-source projects"
     }
   }, {
-    value: "12",
+    value: "13",
     icon: "box",
     label: {
       zh: "自建仓库",
@@ -376,13 +376,13 @@ const SITE = {
     },
     items: [{
       name: "Python",
-      pct: 52
+      pct: 54
     }, {
       name: "HTML",
-      pct: 18
+      pct: 17
     }, {
       name: "TypeScript",
-      pct: 17
+      pct: 16
     }, {
       name: "JavaScript",
       pct: 6
@@ -1191,7 +1191,7 @@ const Hero = ({
     size: 16
   }), /*#__PURE__*/React.createElement("span", null, "GitHub @", SITE.meta.handle), /*#__PURE__*/React.createElement("span", {
     className: "text-xs px-2 py-0.5 rounded bg-white/10 font-mono text-[#cc8066]"
-  }, "★ 2.1k"))))));
+  }, "★ 2.2k"))))));
 };
 const FeaturedProject = ({
   lang
