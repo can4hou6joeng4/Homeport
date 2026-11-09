@@ -1,5 +1,5 @@
 // data.jsx — 站点全部内容数据(中英双语)。组件不写死文案，均从此处取。
-// 数据快照日期：2026-11-02,来源：github.com/can4hou6joeng4(见 readme.md)。
+// 数据快照日期：2026-11-09,来源：github.com/can4hou6joeng4(见 readme.md)。
 
 const LANG_COLORS = {
   Swift: "#F05138",
@@ -149,7 +149,7 @@ const SITE = {
     id: "boss-agent-cli",
     emoji: "🤖",
     name: "boss-agent-cli",
-    stars: "2,173",
+    stars: "2,202",
     starsNote: {
       zh: "GitHub 星标",
       en: "GitHub stars"
@@ -337,14 +337,14 @@ const SITE = {
     en: "These projects address different problems but follow the same principles: explicit boundaries, local-first design, verifiable automation, and low-risk defaults."
   },
   stats: [{
-    value: "2,181",
+    value: "2,210",
     icon: "star",
     label: {
       zh: "累计星标",
       en: "Total stars"
     }
   }, {
-    value: "2,059",
+    value: "3,806",
     icon: "pulse",
     label: {
       zh: "年度贡献",
@@ -378,23 +378,23 @@ const SITE = {
       name: "Python",
       pct: 54
     }, {
-      name: "HTML",
-      pct: 17
-    }, {
       name: "TypeScript",
-      pct: 16
+      pct: 21
+    }, {
+      name: "HTML",
+      pct: 15
     }, {
       name: "JavaScript",
-      pct: 6
+      pct: 5
     }, {
       name: "Go",
-      pct: 3
+      pct: 2
     }, {
       name: "Vue",
       pct: 1
     }, {
       name: "Other",
-      pct: 3
+      pct: 2
     }]
   },
   moorings: [{
