@@ -1,5 +1,5 @@
 // data.jsx — 站点全部内容数据(中英双语)。组件不写死文案，均从此处取。
-// 数据快照日期：2026-11-09,来源：github.com/can4hou6joeng4(见 readme.md)。
+// 数据快照日期：2026-11-16,来源：github.com/can4hou6joeng4(见 readme.md)。
 
 const LANG_COLORS = {
   Swift: "#F05138",
@@ -95,7 +95,7 @@ const SITE = {
     id: "boss-agent-cli",
     emoji: "🤖",
     name: "boss-agent-cli",
-    stars: "2,202",
+    stars: "2,225",
     starsNote: { zh: "GitHub 星标", en: "GitHub stars" },
     desc: {
       zh: "为 AI agent 打造的 BOSS 直聘本地辅助 CLI —— 搜索、福利筛选、意向清单、JSON 信封输出；默认低风险、合规运行。",
@@ -213,8 +213,8 @@ const SITE = {
   },
 
   stats: [
-    { value: "2,210", icon: "star", label: { zh: "累计星标", en: "Total stars" } },
-    { value: "3,806", icon: "pulse", label: { zh: "年度贡献", en: "Contributions / yr" } },
+    { value: "2,233", icon: "star", label: { zh: "累计星标", en: "Total stars" } },
+    { value: "6,796", icon: "pulse", label: { zh: "年度贡献", en: "Contributions / yr" } },
     { value: "8", icon: "grid", label: { zh: "开源项目", en: "Open-source projects" } },
     { value: "13", icon: "box", label: { zh: "自建仓库", en: "Own repos" } },
   ],
@@ -223,10 +223,10 @@ const SITE = {
     title: { zh: "技术语言分布", en: "Language mix" },
     note: { zh: "按所列项目仓库代码量统计", en: "By code volume across listed project repositories" },
     items: [
-      { name: "Python", pct: 54 },
-      { name: "TypeScript", pct: 21 },
-      { name: "HTML", pct: 15 },
-      { name: "JavaScript", pct: 5 },
+      { name: "Python", pct: 55 },
+      { name: "TypeScript", pct: 24 },
+      { name: "HTML", pct: 12 },
+      { name: "JavaScript", pct: 4 },
       { name: "Go", pct: 2 },
       { name: "Vue", pct: 1 },
       { name: "Other", pct: 2 },
