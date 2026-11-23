@@ -1,5 +1,5 @@
 // data.jsx — 站点全部内容数据(中英双语)。组件不写死文案，均从此处取。
-// 数据快照日期：2026-11-16,来源：github.com/can4hou6joeng4(见 readme.md)。
+// 数据快照日期：2026-11-23,来源：github.com/can4hou6joeng4(见 readme.md)。
 
 const LANG_COLORS = {
   Swift: "#F05138",
@@ -149,7 +149,7 @@ const SITE = {
     id: "boss-agent-cli",
     emoji: "🤖",
     name: "boss-agent-cli",
-    stars: "2,225",
+    stars: "2,291",
     starsNote: {
       zh: "GitHub 星标",
       en: "GitHub stars"
@@ -253,7 +253,7 @@ const SITE = {
     id: "Semaphore",
     emoji: "🚩",
     lang: "TypeScript",
-    stars: 3,
+    stars: 4,
     image: {
       zh: "浏览器图像转字符",
       en: "Browser image-to-text art"
@@ -337,14 +337,14 @@ const SITE = {
     en: "These projects address different problems but follow the same principles: explicit boundaries, local-first design, verifiable automation, and low-risk defaults."
   },
   stats: [{
-    value: "2,233",
+    value: "2,300",
     icon: "star",
     label: {
       zh: "累计星标",
       en: "Total stars"
     }
   }, {
-    value: "6,796",
+    value: "13,760",
     icon: "pulse",
     label: {
       zh: "年度贡献",
@@ -376,25 +376,22 @@ const SITE = {
     },
     items: [{
       name: "Python",
-      pct: 55
-    }, {
-      name: "TypeScript",
-      pct: 24
+      pct: 52
     }, {
       name: "HTML",
-      pct: 12
+      pct: 26
+    }, {
+      name: "TypeScript",
+      pct: 17
     }, {
       name: "JavaScript",
-      pct: 4
+      pct: 3
     }, {
       name: "Go",
-      pct: 2
-    }, {
-      name: "Vue",
       pct: 1
     }, {
       name: "Other",
-      pct: 2
+      pct: 1
     }]
   },
   moorings: [{
@@ -1191,7 +1188,7 @@ const Hero = ({
     size: 16
   }), /*#__PURE__*/React.createElement("span", null, "GitHub @", SITE.meta.handle), /*#__PURE__*/React.createElement("span", {
     className: "text-xs px-2 py-0.5 rounded bg-white/10 font-mono text-[#cc8066]"
-  }, "★ 2.2k"))))));
+  }, "★ 2.3k"))))));
 };
 const FeaturedProject = ({
   lang
